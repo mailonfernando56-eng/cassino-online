@@ -2,12 +2,13 @@
 :root {
     --primary: #16C72E;
     --primary-hover: #119923;
-    --win-color: #ffffff; /* Cor nova para o "WIN" */
+    --win-color: #ffffff;
     --bg-dark: #0f1412;
     --header-bg: #18201d;
     --card-bg: #1e2622;
     --text-white: #ffffff;
     --text-gray: #a0a0a0;
+    --sidebar-width: 70px; /* Largura da nova sidebar */
 }
 
 * {
@@ -23,7 +24,67 @@ body {
     line-height: 1.6;
 }
 
-/* Navbar */
+/* --- NOVA SIDEBAR (Lateral Esquerda) --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: var(--header-bg);
+    border-right: 2px solid #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    z-index: 1001; /* Fica acima da navbar */
+}
+
+.sidebar-top {
+    margin-bottom: 40px;
+}
+
+.menu-btn {
+    background: none;
+    color: var(--text-white);
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.sidebar-menu a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 1.5rem;
+    position: relative;
+    transition: 0.3s;
+}
+
+.sidebar-menu a:hover {
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+.badge {
+    position: absolute;
+    top: -10px;
+    right: -25px;
+    background-color: #ff3449;
+    color: white;
+    font-size: 0.6rem;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Ajuste da Navbar para acomodar a sidebar */
 .navbar {
     background-color: var(--header-bg);
     display: flex;
@@ -34,6 +95,7 @@ body {
     top: 0;
     z-index: 1000;
     border-bottom: 2px solid var(--primary);
+    margin-left: var(--sidebar-width); /* Empurra a navbar */
 }
 
 .logo {
@@ -43,7 +105,7 @@ body {
     color: var(--text-white);
 }
 
-.logo-win { color: var(--win-color); font-size: 1.8rem; } /* Estilo novo para WIN */
+.logo-win { color: var(--win-color); font-size: 1.8rem; }
 .dot { color: var(--primary); }
 
 .nav-menu a {
@@ -145,4 +207,5 @@ footer {
     color: var(--text-gray);
     font-size: 0.8rem;
     border-top: 1px solid #222;
+    margin-left: var(--sidebar-width);
 }
