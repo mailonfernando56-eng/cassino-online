@@ -1,4 +1,3 @@
-/* Variáveis de Cores */
 :root {
     --primary: #16C72E;
     --primary-hover: #119923;
@@ -19,13 +18,11 @@ body {
     line-height: 1.6;
 }
 
-/* --- ESTILO PÁGINA DE DEPÓSITO (Elegante) --- */
 .deposit-body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /* Fundo com símbolos de dinheiro */
     background-image: 
         linear-gradient(rgba(15, 20, 18, 0.95), rgba(15, 20, 18, 0.95)),
         url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"%3E%3Ctext x="50%25" y="50%25" font-family="Arial" font-size="20" text-anchor="middle" dominant-baseline="middle" fill="%2316C72E" opacity="0.1"%3E%24%3C/text%3E%3C/svg%3E');
@@ -55,7 +52,6 @@ body {
 h1 { font-size: 2rem; margin-bottom: 10px; color: var(--win-color); }
 .subtitle { color: var(--text-gray); margin-bottom: 30px; }
 
-/* --- BOTÕES DE VALOR --- */
 .value-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -81,7 +77,6 @@ h1 { font-size: 2rem; margin-bottom: 10px; color: var(--win-color); }
     transform: translateY(-3px);
 }
 
-/* --- ÁREA DO QR CODE --- */
 .qr-code-wrapper {
     background-color: white;
     padding: 20px;
