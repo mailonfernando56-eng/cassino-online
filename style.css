@@ -2,6 +2,7 @@
 :root {
     --primary: #16C72E;
     --primary-hover: #119923;
+    --win-color: #ffffff; /* Cor nova para o "WIN" */
     --bg-dark: #0f1412;
     --header-bg: #18201d;
     --card-bg: #1e2622;
@@ -39,9 +40,10 @@ body {
     font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: -1px;
+    color: var(--text-white);
 }
 
-.logo-7 { color: var(--primary); font-size: 1.8rem; }
+.logo-win { color: var(--win-color); font-size: 1.8rem; } /* Estilo novo para WIN */
 .dot { color: var(--primary); }
 
 .nav-menu a {
