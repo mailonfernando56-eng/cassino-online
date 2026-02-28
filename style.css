@@ -9,23 +9,38 @@
 body {
     background-color: #121212;
     color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* Header/Navbar */
+/* --- HEADER SUPERIOR (Imagem 3) --- */
 .navbar {
     width: 100%;
-    padding: 1rem 2rem;
+    height: 60px;
+    padding: 0 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #1a1a1a;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #00c853;
 }
 
 .logo {
     font-weight: bold;
-    font-size: 1.5rem;
-    color: #fff;
+    font-size: 1.2rem;
+    color: #00c853;
     text-decoration: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
 }
 
 .auth-buttons {
@@ -41,23 +56,49 @@ body {
     font-weight: bold;
 }
 
-.btn-login { background: transparent; color: white; }
+.btn-login { background: transparent; color: white; border: 1px solid #444; }
 .btn-signup { background-color: #00c853; color: black; }
 
-/* Container principal */
-.main-container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+/* --- ESTRUTURA SIDEBAR + CONTEÚDO --- */
+.wrapper {
+    display: flex;
+    margin-top: 60px; /* Altura da navbar */
+    flex: 1;
 }
 
-/* Seção de Jogos (Index) */
-.games-section { margin-top: 2rem; }
+/* --- SIDEBAR LATERAL (Imagem 2) --- */
+.sidebar {
+    width: 70px;
+    background-color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    gap: 25px;
+    border-right: 1px solid #333;
+}
+
+.sidebar-icon {
+    color: #888;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.sidebar-icon:hover { color: #00c853; }
+
+/* --- CONTEÚDO PRINCIPAL (Imagem 1) --- */
+.main-content {
+    flex: 1;
+    padding: 2rem;
+}
+
+.games-section { margin-top: 1rem; }
 .section-title { margin-bottom: 1rem; font-size: 1.2rem; }
 
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 15px;
 }
 
@@ -67,6 +108,7 @@ body {
     overflow: hidden;
     transition: transform 0.2s;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .game-card:hover { transform: scale(1.05); }
@@ -77,12 +119,13 @@ body {
     display: block;
 }
 
-/* Seção de Depósito */
+/* --- PÁGINA DE DEPÓSITO (Centralizado) --- */
 .deposit-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 80vh;
+    flex: 1;
+    width: 100%;
 }
 
 .deposit-box {
