@@ -112,9 +112,30 @@ body {
 
 .nav-menu a:hover { color: var(--primary); }
 
-button { cursor: pointer; border-radius: 5px; border: none; padding: 10px 20px; font-weight: 700; }
+/* Botões */
+button, .btn-primary, .btn-secondary { /* Adicionado .btn-primary e .btn-secondary aqui */
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    font-weight: 700;
+    text-decoration: none; /* Para o botão de depósito no topo */
+    display: inline-block; /* Para o botão de depósito no topo */
+}
+
 .btn-primary { background-color: var(--primary); color: #000; }
+.btn-primary:hover { background-color: var(--primary-hover); transform: scale(1.05); }
+
 .btn-secondary { background: transparent; color: var(--text-white); border: 1px solid var(--text-white); }
+.btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+/* Novo estilo para o botão de depósito no topo */
+.btn-deposit-top {
+    margin-right: 10px; /* Espaçamento entre os botões */
+    background-color: var(--primary); /* Mesma cor do botão primário */
+    color: #000;
+}
+
 
 /* --- HERO & GRID --- */
 .hero-banner {
