@@ -1,59 +1,73 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7Games.Bet - Início</title>
+    <title>7Games.Bet - Funcional</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="navbar">
-        <a href="index.html" class="logo">7GAMES.BET</a>
+    <nav class="top-nav">
+        <a href="#" class="logo">7GAMES.BET</a>
         <div class="nav-links">
             <a href="#">CASSINO</a>
             <a href="#">ESPORTES</a>
             <a href="#">PROMOÇÕES</a>
         </div>
-        <div class="auth-buttons">
-            <button class="btn-login">Entrar</button>
-            <button class="btn-signup">Cadastre-se</button>
+        <div class="auth-btns" id="authSection">
+            <button class="btn-login" onclick="abrirModal('modalLogin')">ENTRAR</button>
+            <button class="btn-signup" onclick="abrirModal('modalCadastro')">CADASTRE-SE</button>
         </div>
-    </header>
+    </nav>
 
-    <div class="wrapper">
-        <nav class="sidebar">
-            <a href="#" class="sidebar-icon">⚽</a>
-            <a href="#" class="sidebar-icon">🎲</a>
-            <a href="#" class="sidebar-icon">♠️</a>
-            <a href="#" class="sidebar-icon">🎁</a>
-            <a href="#" class="sidebar-icon">🎡</a>
-            <a href="#" class="sidebar-icon">👤</a>
-        </nav>
+    <div class="main-wrapper">
+        <aside class="sidebar">
+            <span>☰</span><span>⚽</span><span>🎲</span><span>🎁</span><span>🎡</span>
+        </aside>
 
-        <main class="main-content">
-            <section class="games-section">
-                <h2 class="section-title">🎰 +JOGOS DA SEMANA</h2>
-                <div class="games-grid">
-                    <a href="deposito.html" class="game-card">
-                        <img src="HAkJaHZXgAAwEn8.jpg" alt="Fortune Horse">
-                    </a>
-                    <a href="deposito.html" class="game-card">
-                        <img src="fortune rabbit.png" alt="Fortune Rabbit">
-                    </a>
-                    <a href="deposito.html" class="game-card">
-                        <img src="images.jpg" alt="Fortune Tiger">
-                    </a>
-                    <a href="deposito.html" class="game-card">
-                        <img src="_fortune-dragon-pg-soft-game.jpg" alt="Fortune Dragon">
-                    </a>
-                    <a href="deposito.html" class="game-card">
-                        <img src="download.jpg" alt="Master Raccoon">
-                    </a>
+        <main class="content">
+            <h2 class="section-title">🎰 +JOGOS DA SEMANA</h2>
+            <div class="games-grid">
+                <div class="game-card" onclick="abrirModal('modalDeposito')">
+                    <img src="sua-imagem-aqui.jpg" alt="Jogo 1">
                 </div>
-            </section>
+                </div>
         </main>
     </div>
 
+    <div id="modalCadastro" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('modalCadastro')">&times;</span>
+            <img src="sua-imagem-banner.png" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+            <h3>CADASTRE-SE AGORA</h3>
+            <input type="text" id="regCpf" placeholder="CPF">
+            <input type="email" id="regEmail" placeholder="E-mail">
+            <input type="password" id="regSenha" placeholder="Senha">
+            <button class="btn-block" onclick="registrarUsuario()">PRÓXIMO</button>
+        </div>
+    </div>
+
+    <div id="modalLogin" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('modalLogin')">&times;</span>
+            <h3>LOGIN</h3>
+            <input type="email" id="logEmail" placeholder="E-mail">
+            <input type="password" id="logSenha" placeholder="Senha">
+            <button class="btn-block" onclick="fazerLogin()">ENTRAR</button>
+        </div>
+    </div>
+
+    <div id="modalDeposito" class="modal">
+        <div class="modal-content" style="text-align: center;">
+            <span class="close" onclick="fecharModal('modalDeposito')">&times;</span>
+            <h2>Depósito</h2>
+            <p>Selecione o valor desejado</p>
+            <button class="btn-block" style="background:#333; color:white; margin:5px 0;">R$ 10,00</button>
+            <button class="btn-block" style="background:#333; color:white; margin:5px 0;">R$ 20,00</button>
+            <button class="btn-block" style="background:#333; color:white; margin:5px 0;">R$ 30,00</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
