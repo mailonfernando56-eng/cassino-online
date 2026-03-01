@@ -1,41 +1,33 @@
-const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
-const app = express();
-const PORT = 3000;
+function abrirModal(id) { document.getElementById(id).style.display = 'flex'; }
+function fecharModal(id) { document.getElementById(id).style.display = 'none'; }
 
-// Configuração para ler dados do formulário
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname));
+// FUNÇÃO DE CADASTRO (Banco de Dados Local)
+function registrarUsuario() {
+    const user = {
+        cpf: document.getElementById('regCpf').value,
+        email: document.getElementById('regEmail').value,
+        senha: document.getElementById('regSenha').value,
+        saldo: 0
+    };
 
-// Conexão com o Banco de Dados SQLite
-const db = new sqlite3.Database('./database.db', (err) => {
-    if (err) console.error(err.message);
-    console.log('Conectado ao banco de dados SQLite.');
-});
+    if(!user.email || !user.senha) return alert("Preencha tudo!");
 
-// Criação da tabela de usuários se não existir
-db.run(`CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    cpf TEXT UNIQUE,
-    name TEXT,
-    email TEXT UNIQUE,
-    password TEXT
-)`);
+    localStorage.setItem(user.email, JSON.stringify(user));
+    alert("Cadastro realizado com sucesso!");
+    fecharModal('modalCadastro');
+}
 
-// Rota para processar o cadastro
-app.post('/register', (req, res) => {
-    const { cpf, name, email, password } = req.body;
+// FUNÇÃO DE LOGIN
+function fazerLogin() {
+    const email = document.getElementById('logEmail').value;
+    const senha = document.getElementById('logSenha').value;
     
-    const sql = `INSERT INTO users (cpf, name, email, password) VALUES (?, ?, ?, ?)`;
-    db.run(sql, [cpf, name, email, password], function(err) {
-        if (err) {
-            return res.send('Erro ao cadastrar: CPF ou E-mail já cadastrado.');
-        }
-        res.send('Cadastro realizado com sucesso! <a href="index.html">Voltar para o site</a>');
-    });
-});
+    const usuarioSalvo = JSON.parse(localStorage.getItem(email));
 
-app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
-});
+    if(usuarioSalvo && usuarioSalvo.senha === senha) {
+        document.getElementById('authSection').innerHTML = `<span>Olá, ${email} | Saldo: R$ 0,00</span>`;
+        fecharModal('modalLogin');
+    } else {
+        alert("Usuário ou senha incorretos!");
+    }
+}
