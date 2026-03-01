@@ -1,165 +1,51 @@
-/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+/* ... (mantenha o CSS anterior e adicione isto no final) ... */
 
-body {
-    background-color: #121212;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-/* --- HEADER SUPERIOR (Imagem 3) --- */
-.navbar {
-    width: 100%;
-    height: 60px;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1a1a1a;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 2px solid #00c853;
-}
-
-.logo {
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: #00c853;
-    text-decoration: none;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-}
-
-.auth-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.btn-login, .btn-signup {
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.btn-login { background: transparent; color: white; border: 1px solid #444; }
-.btn-signup { background-color: #00c853; color: black; }
-
-/* --- ESTRUTURA SIDEBAR + CONTEÚDO --- */
-.wrapper {
-    display: flex;
-    margin-top: 60px; /* Altura da navbar */
-    flex: 1;
-}
-
-/* --- SIDEBAR LATERAL (Imagem 2) --- */
-.sidebar {
-    width: 70px;
-    background-color: #1a1a1a;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 2rem;
-    gap: 25px;
-    border-right: 1px solid #333;
-}
-
-.sidebar-icon {
-    color: #888;
-    font-size: 1.5rem;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.sidebar-icon:hover { color: #00c853; }
-
-/* --- CONTEÚDO PRINCIPAL (Imagem 1) --- */
-.main-content {
-    flex: 1;
-    padding: 2rem;
-}
-
-.games-section { margin-top: 1rem; }
-.section-title { margin-bottom: 1rem; font-size: 1.2rem; }
-
-.games-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 15px;
-}
-
-.game-card {
-    background-color: #1a1a1a;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.2s;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.game-card:hover { transform: scale(1.05); }
-
-.game-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* --- PÁGINA DE DEPÓSITO (Centralizado) --- */
-.deposit-container {
+/* --- FORMULÁRIO DE CADASTRO --- */
+.form-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1;
-    width: 100%;
+    min-height: 80vh;
+    padding: 2rem;
 }
 
-.deposit-box {
+.form-box {
     background-color: #1a1a1a;
     padding: 2rem;
     border-radius: 10px;
-    text-align: center;
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
+    border: 1px solid #333;
 }
 
-.back-link {
-    color: #00c853;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-    margin-bottom: 1rem;
+.form-box h2 {
+    color: white;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
-.deposit-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; color: #ccc; }
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #222;
+    color: white;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 1rem;
+    background-color: #00c853;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.1rem;
     margin-top: 1rem;
 }
 
-.btn-amount {
-    padding: 1rem;
-    background-color: #333;
-    color: white;
-    border: 1px solid #444;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.btn-amount:hover { background-color: #444; }
+.btn-submit:hover { background-color: #00e676; }
