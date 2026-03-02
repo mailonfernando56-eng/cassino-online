@@ -1,33 +1,32 @@
-function abrirModal(id) { document.getElementById(id).style.display = 'flex'; }
-function fecharModal(id) { document.getElementById(id).style.display = 'none'; }
-
-// FUNÇÃO DE CADASTRO (Banco de Dados Local)
-function registrarUsuario() {
-    const user = {
-        cpf: document.getElementById('regCpf').value,
-        email: document.getElementById('regEmail').value,
-        senha: document.getElementById('regSenha').value,
-        saldo: 0
-    };
-
-    if(!user.email || !user.senha) return alert("Preencha tudo!");
-
-    localStorage.setItem(user.email, JSON.stringify(user));
-    alert("Cadastro realizado com sucesso!");
-    fecharModal('modalCadastro');
-}
-
-// FUNÇÃO DE LOGIN
-function fazerLogin() {
-    const email = document.getElementById('logEmail').value;
-    const senha = document.getElementById('logSenha').value;
+// Sistema de Login e Cadastro via LocalStorage
+const SiteDB = {
+    registrar: function(nome, email, senha) {
+        const dados = { nome, email, senha, saldo: 0.00 };
+        localStorage.setItem(email, JSON.stringify(dados));
+        localStorage.setItem('sessaoAtiva', email);
+        return true;
+    },
     
-    const usuarioSalvo = JSON.parse(localStorage.getItem(email));
+    getSessao: function() {
+        const email = localStorage.getItem('sessaoAtiva');
+        return email ? JSON.parse(localStorage.getItem(email)) : null;
+    }
+};
 
-    if(usuarioSalvo && usuarioSalvo.senha === senha) {
-        document.getElementById('authSection').innerHTML = `<span>Olá, ${email} | Saldo: R$ 0,00</span>`;
-        fecharModal('modalLogin');
-    } else {
-        alert("Usuário ou senha incorretos!");
+// Atualizar interface se logado
+function atualizarUI() {
+    const user = SiteDB.getSessao();
+    if(user) {
+        document.getElementById('user-area').innerHTML = `
+            <div style="display:flex; align-items:center; gap:20px;">
+                <div style="text-align:right">
+                    <p style="color:var(--primary); font-weight:800; font-size:18px;">R$ ${user.saldo.toFixed(2)}</p>
+                    <p style="font-size:10px; color:var(--text-muted)">SALDO DISPONÍVEL</p>
+                </div>
+                <button class="btn-signup" onclick="window.location.href='deposito.html'">DEPÓSITO</button>
+            </div>
+        `;
     }
 }
+
+document.addEventListener('DOMContentLoaded', atualizarUI);
