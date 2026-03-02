@@ -1,44 +1,58 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - 7Games.Bet</title>
+    <title>Cadastro | 7Games.Bet</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .cadastro-box { 
+            max-width: 500px; 
+            margin: 50px auto; 
+            background: var(--bg-card); 
+            border-radius: 15px; 
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .banner-cad { width: 100%; height: 180px; object-fit: cover; }
+        .form-padding { padding: 30px; }
+        input { 
+            width: 100%; padding: 14px; margin-bottom: 15px; 
+            background: #222; border: 1px solid #444; color: white; border-radius: 8px; 
+        }
+        .btn-cad { 
+            width: 100%; padding: 15px; background: var(--primary); 
+            border: none; border-radius: 8px; font-weight: 800; cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+    <div class="cadastro-box">
+        <img src="imagem_2026-03-01_093452021.png" class="banner-cad" alt="Banner Cadastro">
+        <div class="form-padding">
+            <h3 style="margin-bottom: 20px;">CADASTRE-SE AGORA, É FÁCIL!</h3>
+            <input type="text" id="cad-nome" placeholder="Primeiro Nome">
+            <input type="text" id="cad-cpf" placeholder="CPF (Verificar)">
+            <input type="email" id="cad-email" placeholder="E-mail">
+            <input type="password" id="cad-senha" placeholder="Senha">
+            <button class="btn-cad" onclick="finalizar()">PRÓXIMO</button>
+        </div>
+    </div>
 
-    <header class="navbar">
-        <a href="index.html" class="logo">7GAMES.BET</a>
-    </header>
-
-    <main class="form-container">
-        <form class="form-box" action="/register" method="POST">
-            <h2>Cadastre-se Agora</h2>
+    <script src="script.js"></script>
+    <script>
+        function finalizar() {
+            const nome = document.getElementById('cad-nome').value;
+            const email = document.getElementById('cad-email').value;
+            const senha = document.getElementById('cad-senha').value;
             
-            <div class="form-group">
-                <label>CPF</label>
-                <input type="text" name="cpf" placeholder="000.000.000-00" required>
-            </div>
-
-            <div class="form-group">
-                <label>Nome Completo</label>
-                <input type="text" name="name" placeholder="João Silva" required>
-            </div>
-
-            <div class="form-group">
-                <label>E-mail</label>
-                <input type="email" name="email" placeholder="email@exemplo.com" required>
-            </div>
-
-            <div class="form-group">
-                <label>Senha</label>
-                <input type="password" name="password" placeholder="********" required>
-            </div>
-
-            <button type="submit" class="btn-submit">FINALIZAR CADASTRO</button>
-        </form>
-    </main>
-
+            if(nome && email && senha) {
+                SiteDB.registrar(nome, email, senha);
+                alert('Bem-vindo, ' + nome + '!');
+                window.location.href = 'index.html';
+            } else {
+                alert('Preencha todos os campos!');
+            }
+        }
+    </script>
 </body>
 </html>
