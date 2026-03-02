@@ -2,19 +2,149 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Pagamento R$ 20 | WinGames.bet</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento PIX R$ 20 | WinGames.bet</title>
+    <style>
+        :root {
+            --pix-green: #32BF84;
+            --dark-bg: #1a1a1a;
+            --card-bg: #2d2d2d;
+            --text-light: #ffffff;
+            --text-gray: #b3b3b3;
+        }
+
+        body.deposit-body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .deposit-container {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--pix-green);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 40px 0 10px 0;
+            color: var(--pix-green);
+        }
+
+        .subtitle {
+            color: var(--text-gray);
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+
+        .qr-code-wrapper {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 4px solid var(--pix-green);
+        }
+
+        .qr-code-img {
+            width: 180px;
+            height: 180px;
+            display: block;
+        }
+
+        .pix-code-box {
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid #444;
+            color: var(--text-gray);
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            word-break: break-all;
+            margin-bottom: 15px;
+            min-height: 50px;
+        }
+
+        .copy-button {
+            background-color: var(--pix-green);
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+            width: 100%;
+        }
+
+        .copy-button:hover {
+            background-color: #279e6c;
+        }
+
+        .copy-button:active {
+            transform: scale(0.98);
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body class="deposit-body">
+
     <div class="deposit-container">
         <a href="deposito.html" class="back-link">← Voltar</a>
+        
         <h1>R$ 20,00</h1>
         <p class="subtitle">Escaneie o QR Code ou copie o código</p>
+        
         <div class="qr-code-wrapper">
-            <img src="qr-25.png" alt="QR Code PIX 25" class="qr-code-img">
+            <img src="qr-20.png" alt="QR Code PIX 20" class="qr-code-img">
         </div>
-        <div class="pix-code-box">00020101021126730014br.gov.bcb.pix01368635868a-f4a3-42cc-9a67-2cf71c7520600211WinGamesbet520400005303986540520.005802BR5918MAILON F A PRESTES6009ARAPONGAS62070503***6304A021</div>
-        <p class="subtitle" style="margin-top: 15px; font-size: 0.9rem;">Saldo atualizado automaticamente.</p>
+        
+        <div class="pix-code-box" id="pixCode">00020101021126730014br.gov.bcb.pix01368635868a-f4a3-42cc-9a67-2cf71c7520600211WinGamesbet520400005303986540520.005802BR5918MAILON F A PRESTES6009ARAPONGAS62070503***6304A021</div>
+        
+        <button class="copy-button" onclick="copyPixCode()">Copiar Código PIX</button>
+        
+        <p class="footer-note">Saldo atualizado automaticamente após o pagamento.</p>
     </div>
+
+    <script>
+        function copyPixCode() {
+            var pixCode = document.getElementById("pixCode").innerText;
+            navigator.clipboard.writeText(pixCode).then(function() {
+                alert("Código PIX copiado para a área de transferência!");
+            }, function(err) {
+                console.error('Erro ao copiar: ', err);
+            });
+        }
+    </script>
 </body>
 </html>
