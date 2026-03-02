@@ -138,7 +138,10 @@
 
     <script>
         function copyPixCode() {
+            // Pega o texto de dentro da div pix-code-box
             var pixCode = document.getElementById("pixCode").innerText;
+            
+            // Copia para a área de transferência
             navigator.clipboard.writeText(pixCode).then(function() {
                 alert("Código PIX copiado para a área de transferência!");
             }, function(err) {
