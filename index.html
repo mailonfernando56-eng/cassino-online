@@ -2,70 +2,64 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>7Games.Bet - Funcional</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Games.Bet | Diversão na palma da mão</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav class="top-nav">
-        <a href="#" class="logo">7GAMES.BET</a>
-        <div class="nav-links">
+    <header class="top-nav">
+        <a href="index.html" class="logo">7GAMES.BET</a>
+        <nav class="nav-menu">
             <a href="#">CASSINO</a>
             <a href="#">ESPORTES</a>
+            <a href="#">E-SPORTS</a>
             <a href="#">PROMOÇÕES</a>
+        </nav>
+        <div class="auth-btns" id="user-area">
+            <button class="btn-login" onclick="window.location.href='cadastro.html'">ENTRAR</button>
+            <button class="btn-signup" onclick="window.location.href='cadastro.html'">CADASTRE-SE</button>
         </div>
-        <div class="auth-btns" id="authSection">
-            <button class="btn-login" onclick="abrirModal('modalLogin')">ENTRAR</button>
-            <button class="btn-signup" onclick="abrirModal('modalCadastro')">CADASTRE-SE</button>
-        </div>
-    </nav>
+    </header>
 
-    <div class="main-wrapper">
+    <div class="main-layout">
         <aside class="sidebar">
-            <span>☰</span><span>⚽</span><span>🎲</span><span>🎁</span><span>🎡</span>
+            <div class="sidebar-item">⚽</div>
+            <div class="sidebar-item">🎲</div>
+            <div class="sidebar-item">🃏</div>
+            <div class="sidebar-item">🎡</div>
+            <div class="sidebar-item">🎁</div>
         </aside>
 
-        <main class="content">
-            <h2 class="section-title">🎰 +JOGOS DA SEMANA</h2>
+        <main class="main-content">
+            <div class="section-header">
+                <h2>🎰 + JOGOS DA SEMANA</h2>
+                <a href="#" style="color: var(--primary); text-decoration: none; font-size: 14px;">VER MAIS ></a>
+            </div>
+
             <div class="games-grid">
-                <div class="game-card" onclick="abrirModal('modalDeposito')">
-                    <img src="sua-imagem-aqui.jpg" alt="Jogo 1">
+                <div class="game-card" onclick="window.location.href='deposito.html'">
+                    <img src="imagens jogos cassino/_fortune-dragon-pg-soft-game.jpg" alt="Fortune Dragon">
+                    <div class="play-btn">JOGAR AGORA</div>
                 </div>
+
+                <div class="game-card" onclick="window.location.href='deposito.html'">
+                    <img src="imagens jogos cassino/fortune rabbit.png" alt="Fortune Rabbit">
+                    <div class="play-btn">JOGAR AGORA</div>
                 </div>
+
+                <div class="game-card" onclick="window.location.href='deposito.html'">
+                    <img src="imagens jogos cassino/images.jpg" alt="Fortune Tiger">
+                    <div class="play-btn">JOGAR AGORA</div>
+                </div>
+
+                <div class="game-card" onclick="window.location.href='deposito.html'">
+                    <img src="imagens jogos cassino/download.jpg" alt="Master Raccoon">
+                    <div class="play-btn">JOGAR AGORA</div>
+                </div>
+            </div>
         </main>
-    </div>
-
-    <div id="modalCadastro" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="fecharModal('modalCadastro')">&times;</span>
-            <img src="sua-imagem-banner.png" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
-            <h3>CADASTRE-SE AGORA</h3>
-            <input type="text" id="regCpf" placeholder="CPF">
-            <input type="email" id="regEmail" placeholder="E-mail">
-            <input type="password" id="regSenha" placeholder="Senha">
-            <button class="btn-block" onclick="registrarUsuario()">PRÓXIMO</button>
-        </div>
-    </div>
-
-    <div id="modalLogin" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="fecharModal('modalLogin')">&times;</span>
-            <h3>LOGIN</h3>
-            <input type="email" id="logEmail" placeholder="E-mail">
-            <input type="password" id="logSenha" placeholder="Senha">
-            <button class="btn-block" onclick="fazerLogin()">ENTRAR</button>
-        </div>
-    </div>
-
-    <div id="modalDeposito" class="modal">
-        <div class="modal-content" style="text-align: center;">
-            <span class="close" onclick="fecharModal('modalDeposito')">&times;</span>
-            <h2>Depósito</h2>
-            <p>Selecione o valor desejado</p>
-            <button class="btn-block" style="background:#333; color:white; margin:5px 0;">R$ 10,00</button>
-            <button class="btn-block" style="background:#333; color:white; margin:5px 0;">R$ 20,00</button>
-            <button class="btn-block" style="background:#333; color:white; margin:5px 0;">R$ 30,00</button>
-        </div>
     </div>
 
     <script src="script.js"></script>
