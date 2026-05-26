@@ -3,203 +3,370 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="description" content="LuxBet - O melhor cassino online do Brasil. Jogue Fortune Tiger, Roleta, Aviator e muito mais. Bônus exclusivos de boas-vindas!">
-    <meta name="keywords" content="cassino, tigrinho, fortune tiger, roleta, aviator, slots">
-    <title>LuxBet - O Melhor Cassino Online do Brasil</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <meta name="description" content="LuxBet - O site mais confiável, justo e certificado. Junte-se a nós. Torne-se o próximo milionário">
+    <meta name="theme-color" content="#0a0c10">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>LuxBet - Cassino Online Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!-- Loading Screen -->
-<div class="loader-wrapper" id="loader">
-    <div class="loader"></div>
-</div>
-
-<!-- Navbar Desktop -->
-<div class="top-nav">
-    <div class="logo">
-        <i class="fas fa-crown"></i> LUX<span>BET</span>
-    </div>
-    <div class="nav-menu">
-        <a href="index.html" class="active">Início</a>
-        <a href="#jogos">Jogos</a>
-        <a href="#promocoes">Promoções</a>
-        <a href="#suporte">Suporte</a>
-    </div>
-    <div class="auth-btns">
-        <button class="btn-login" id="loginBtn">Entrar</button>
-        <button class="btn-signup" id="signupBtn">Cadastro</button>
-        <button class="btn-deposit-nav" id="depositNavBtn"><i class="fas fa-coins"></i> Depósito</button>
-    </div>
-    <div class="mobile-menu-icon" id="mobileMenuIcon">
-        <i class="fas fa-bars"></i>
-    </div>
-</div>
-
-<!-- Mobile Side Menu -->
-<div class="mobile-sidebar" id="mobileSidebar">
-    <div class="mobile-sidebar-header">
-        <div class="logo">LUX<span>BET</span></div>
-        <button class="close-sidebar" id="closeSidebar"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="mobile-sidebar-menu">
-        <a href="index.html"><i class="fas fa-home"></i> Início</a>
-        <a href="#jogos"><i class="fas fa-dice-d6"></i> Jogos</a>
-        <a href="#promocoes"><i class="fas fa-gift"></i> Promoções</a>
-        <a href="deposito.html"><i class="fas fa-coins"></i> Depósito</a>
-        <a href="login.html"><i class="fas fa-user"></i> Minha Conta</a>
-    </div>
-    <div class="mobile-sidebar-footer">
-        <button class="btn-login-mobile" onclick="window.location.href='login.html'">Entrar</button>
-        <button class="btn-signup-mobile" onclick="window.location.href='cadastro.html'">Cadastrar</button>
-    </div>
-</div>
-
-<div class="main-layout">
-    <!-- Sidebar Desktop -->
-    <div class="sidebar">
-        <div class="sidebar-item" data-game="tigrinho">
-            <i class="fas fa-dragon"></i>
-            <span>Tigrinho</span>
-        </div>
-        <div class="sidebar-item" data-game="roleta">
-            <i class="fas fa-chart-line"></i>
-            <span>Roleta</span>
-        </div>
-        <div class="sidebar-item" data-game="touro">
-            <i class="fas fa-bull"></i>
-            <span>Touro</span>
-        </div>
-        <div class="sidebar-item" data-game="aviator">
-            <i class="fas fa-plane"></i>
-            <span>Aviator</span>
-        </div>
-        <div class="sidebar-item" data-game="mines">
-            <i class="fas fa-bomb"></i>
-            <span>Mines</span>
-        </div>
-        <div class="sidebar-item" data-game="blackjack">
-            <i class="fas fa-club"></i>
-            <span>Blackjack</span>
-        </div>
-    </div>
-
-    <div class="main-content">
-        <!-- Hero Banner -->
-        <div class="hero-banner">
-            <div class="hero-content">
-                <div class="hero-badge">🔥 O MELHOR DO BRASIL 🔥</div>
-                <h1>Bem-vindo ao <span class="highlight">LuxBet</span></h1>
-                <p>A experiência de cassino mais premium do país</p>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-value">+50.000</span>
-                        <span class="stat-label">Jogadores Ativos</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-value">R$2M+</span>
-                        <span class="stat-label">Prêmios Pagos</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-value">24/7</span>
-                        <span class="stat-label">Suporte</span>
-                    </div>
+    <div id="app">
+        <!-- Header / Navbar -->
+        <header class="header">
+            <div class="container">
+                <div class="logo">
+                    <i class="fas fa-crown"></i> LUX<span>BET</span>
                 </div>
-                <div class="hero-buttons">
+                <nav class="nav desktop-nav">
+                    <a href="#" class="nav-link active">Início</a>
+                    <a href="#jogos" class="nav-link">Jogos</a>
+                    <a href="#promocoes" class="nav-link">Promoções</a>
+                    <a href="#suporte" class="nav-link">Suporte</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="btn-outline" onclick="window.location.href='login.html'">Entrar</button>
+                    <button class="btn-primary" onclick="window.location.href='cadastro.html'">Cadastrar</button>
                     <button class="btn-deposit" onclick="window.location.href='deposito.html'">
-                        <i class="fas fa-coins"></i> DEPOSITAR AGORA
+                        <i class="fas fa-coins"></i> Depósito
                     </button>
-                    <button class="btn-cadastro" onclick="window.location.href='cadastro.html'">
-                        <i class="fas fa-user-plus"></i> BÔNUS DE BOAS-VINDAS
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
-        </div>
+        </header>
 
-        <!-- Jogos Populares -->
-        <div class="section-header" id="jogos">
-            <h2><i class="fas fa-fire" style="color: #ff6b35;"></i> Jogos Populares</h2>
-            <div class="view-all">Ver todos <i class="fas fa-chevron-right"></i></div>
-        </div>
-
-        <div class="games-grid" id="gamesGrid"></div>
-
-        <!-- Jogos em Destaque -->
-        <div class="section-header" style="margin-top: 40px;">
-            <h2><i class="fas fa-star" style="color: #ffd700;"></i> Jogos em Destaque</h2>
-            <div class="view-all">Explorar</div>
-        </div>
-
-        <div class="featured-games-grid" id="featuredGamesGrid"></div>
-
-        <!-- Promoções -->
-        <div class="section-header" id="promocoes" style="margin-top: 40px;">
-            <h2><i class="fas fa-gift" style="color: #00c853;"></i> Bônus e Promoções</h2>
-            <div class="view-all">Ver todas</div>
-        </div>
-
-        <div class="promo-grid">
-            <div class="promo-card">
-                <div class="promo-badge">100%</div>
-                <h3>Bônus de Boas-Vindas</h3>
-                <p>Até R$500 + 50 rodadas grátis no Fortune Tiger</p>
-                <div class="promo-code">Código: LUX100</div>
-                <button class="promo-btn" onclick="window.location.href='cadastro.html'">RESGATAR AGORA</button>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-header">
+                <div class="logo">LUX<span>BET</span></div>
+                <button class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></button>
             </div>
-            <div class="promo-card">
-                <div class="promo-badge">20%</div>
-                <h3>Cashback Semanal</h3>
-                <p>Recupere 20% das suas perdas todas as segundas</p>
-                <div class="promo-code">Automático</div>
-                <button class="promo-btn" onclick="window.location.href='deposito.html'">PARTICIPAR</button>
-            </div>
-            <div class="promo-card">
-                <div class="promo-badge">R$50</div>
-                <h3>Indique um Amigo</h3>
-                <p>Ganhe R$50 para cada amigo que depositar</p>
-                <div class="promo-code">Indicação</div>
-                <button class="promo-btn" onclick="showToast('Compartilhe seu link de indicação!')">CONVIDAR</button>
+            <nav class="mobile-nav">
+                <a href="#"><i class="fas fa-home"></i> Início</a>
+                <a href="#jogos"><i class="fas fa-dice-d6"></i> Jogos</a>
+                <a href="#promocoes"><i class="fas fa-gift"></i> Promoções</a>
+                <a href="deposito.html"><i class="fas fa-coins"></i> Depósito</a>
+                <a href="login.html"><i class="fas fa-user"></i> Minha Conta</a>
+            </nav>
+            <div class="mobile-menu-footer">
+                <button class="btn-outline w-100" onclick="window.location.href='login.html'">Entrar</button>
+                <button class="btn-primary w-100" onclick="window.location.href='cadastro.html'">Cadastrar</button>
             </div>
         </div>
 
-        <!-- Newsletter -->
-        <div class="newsletter-section">
-            <div class="newsletter-content">
-                <i class="fas fa-envelope"></i>
-                <h3>Receba Ofertas Exclusivas</h3>
-                <p>Cadastre-se e receba bônus especiais no seu e-mail</p>
-                <div class="newsletter-form">
-                    <input type="email" placeholder="Seu melhor e-mail" id="newsletterEmail">
-                    <button onclick="subscribeNewsletter()">INSCREVER</button>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-shield-alt"></i> PLATAFORMA CERTIFICADA
+                    </div>
+                    <h1 class="hero-title">
+                        Aposte e Ganhe<br>
+                        <span class="gradient-text">Até R$10.000</span> em Bônus
+                    </h1>
+                    <p class="hero-subtitle">
+                        Experimente a emoção do melhor cassino online. Jogos justos, pagamentos rápidos e suporte 24/7.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary btn-large" onclick="window.location.href='cadastro.html'">
+                            <i class="fas fa-user-plus"></i> Criar Conta Grátis
+                        </button>
+                        <button class="btn-outline btn-large" onclick="window.location.href='deposito.html'">
+                            <i class="fas fa-coins"></i> Depositar Agora
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-value">+50K</span>
+                            <span class="stat-label">Jogadores Ativos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">R$2M+</span>
+                            <span class="stat-label">Prêmios Pagos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">24/7</span>
+                            <span class="stat-label">Suporte VIP</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+        </section>
 
-<div class="bottom-nav">
-    <div class="bottom-item active" data-tab="home">
-        <i class="fas fa-home"></i>
-        <span>Início</span>
-    </div>
-    <div class="bottom-item" data-tab="jogos">
-        <i class="fas fa-dice-d6"></i>
-        <span>Jogos</span>
-    </div>
-    <div class="bottom-item" data-tab="deposito" onclick="window.location.href='deposito.html'">
-        <i class="fas fa-coins"></i>
-        <span>Depósito</span>
-    </div>
-    <div class="bottom-item" data-tab="perfil" onclick="window.location.href='login.html'">
-        <i class="fas fa-user"></i>
-        <span>Perfil</span>
-    </div>
-</div>
+        <!-- Featured Games Section -->
+        <section class="section" id="jogos">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-title">
+                        <h2><i class="fas fa-fire"></i> Jogos em Destaque</h2>
+                        <p>Os jogos mais populares do momento</p>
+                    </div>
+                    <a href="#" class="view-all">Ver todos <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="games-grid" id="featuredGames"></div>
+            </div>
+        </section>
 
-<div id="toastMsg" class="toast-msg"></div>
+        <!-- Popular Games Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-title">
+                        <h2><i class="fas fa-star"></i> Mais Jogados</h2>
+                        <p>Escolha seu jogo favorito e comece a ganhar</p>
+                    </div>
+                </div>
+                <div class="games-grid" id="popularGames"></div>
+            </div>
+        </section>
 
-<script src="script.js"></script>
+        <!-- Promotions Section -->
+        <section class="section" id="promocoes">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-title">
+                        <h2><i class="fas fa-gift"></i> Bônus e Promoções</h2>
+                        <p>Ofertas exclusivas para você</p>
+                    </div>
+                </div>
+                <div class="promo-grid">
+                    <div class="promo-card">
+                        <div class="promo-icon"><i class="fas fa-gem"></i></div>
+                        <div class="promo-badge">100%</div>
+                        <h3>Bônus de Boas-Vindas</h3>
+                        <p>Até R$500 + 50 Rodadas Grátis</p>
+                        <div class="promo-code">Código: LUX100</div>
+                        <button class="btn-primary w-100" onclick="window.location.href='cadastro.html'">Resgatar</button>
+                    </div>
+                    <div class="promo-card">
+                        <div class="promo-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="promo-badge">20%</div>
+                        <h3>Cashback Semanal</h3>
+                        <p>Recupere 20% das suas perdas</p>
+                        <div class="promo-code">Automático</div>
+                        <button class="btn-primary w-100" onclick="window.location.href='deposito.html'">Participar</button>
+                    </div>
+                    <div class="promo-card">
+                        <div class="promo-icon"><i class="fas fa-users"></i></div>
+                        <div class="promo-badge">R$50</div>
+                        <h3>Indique um Amigo</h3>
+                        <p>Ganhe R$50 por indicação</p>
+                        <div class="promo-code">Convite</div>
+                        <button class="btn-primary w-100" onclick="showToast('Compartilhe seu link de indicação!')">Convidar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-card">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <h3>Receba Ofertas Exclusivas</h3>
+                    <p>Cadastre-se e receba bônus especiais no seu e-mail</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Seu melhor e-mail" id="newsletterEmail">
+                        <button class="btn-primary" onclick="subscribeNewsletter()">Inscrever</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-about">
+                        <div class="logo">LUX<span>BET</span></div>
+                        <p>O melhor cassino online do Brasil. Jogos justos, pagamentos rápidos e suporte 24/7.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-telegram"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Institucional</h4>
+                        <a href="#">Sobre nós</a>
+                        <a href="#">Termos de Uso</a>
+                        <a href="#">Política de Privacidade</a>
+                        <a href="#">Regras de Bônus</a>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Jogos</h4>
+                        <a href="#">Fortune Tiger</a>
+                        <a href="#">Roleta</a>
+                        <a href="#">Aviator</a>
+                        <a href="#">Mines</a>
+                        <a href="#">Blackjack</a>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Suporte</h4>
+                        <a href="#">Central de Ajuda</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Contato</a>
+                        <a href="#">Depósitos</a>
+                        <a href="#">Saques</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 LuxBet - Todos os direitos reservados. Aposte com responsabilidade.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script>
+        // Games Data
+        const featuredGamesList = [
+            { id: 1, name: "Fortune Tiger", category: "Slot", img: "imagens_jogos_cassino/fortune-tiger.jpg", description: "O jogo mais famoso do momento", bgColor: "#ff6b35" },
+            { id: 2, name: "Roleta Premium", category: "Roleta", img: "imagens_jogos_cassino/roleta.jpg", description: "Roleta ao vivo com dealers reais", bgColor: "#00c853" },
+            { id: 3, name: "Fortune Ox", category: "Slot", img: "imagens_jogos_cassino/fortune-ox.jpg", description: "Multiplique seus ganhos", bgColor: "#ffd700" },
+            { id: 4, name: "Aviator", category: "Crash", img: "imagens_jogos_cassino/aviator.jpg", description: "O jogo de avião mais emocionante", bgColor: "#2196f3" }
+        ];
+
+        const popularGamesList = [
+            { id: 5, name: "Fortune Rabbit", category: "Slot", img: "imagens_jogos_cassino/fortune-rabbit.jpg", description: "Sorte e prosperidade" },
+            { id: 6, name: "Fortune Dragon", category: "Slot", img: "imagens_jogos_cassino/fortune-dragon.jpg", description: "Dragões da fortuna" },
+            { id: 7, name: "Mines", category: "Crash", img: "imagens_jogos_cassino/mines.jpg", description: "Encontre as gemas" },
+            { id: 8, name: "Blackjack", category: "Mesa", img: "imagens_jogos_cassino/blackjack.jpg", description: "21 - O clássico do cassino" },
+            { id: 9, name: "Bac Bo", category: "Mesa", img: "imagens_jogos_cassino/bac-bo.jpg", description: "Baccarat moderno" },
+            { id: 10, name: "Crash", category: "Crash", img: "imagens_jogos_cassino/crash.jpg", description: "Multiplicadores explosivos" }
+        ];
+
+        function createGameCard(game, isFeatured = false) {
+            return `
+                <div class="game-card" onclick="playGame('${game.name}')">
+                    <div class="game-card-image">
+                        <img src="${game.img}" alt="${game.name}" onerror="this.src='https://picsum.photos/id/${game.id + 100}/300/200'">
+                        ${isFeatured ? '<div class="featured-badge"><i class="fas fa-fire"></i> Top</div>' : ''}
+                        <div class="game-hover">
+                            <button class="play-now"><i class="fas fa-play"></i> Jogar Agora</button>
+                        </div>
+                    </div>
+                    <div class="game-card-info">
+                        <h3>${game.name}</h3>
+                        <p>${game.description}</p>
+                        <div class="game-category">
+                            <span class="category-badge ${game.category === 'Slot' ? 'slot' : game.category === 'Roleta' ? 'roleta' : 'crash'}">
+                                ${game.category}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderGames() {
+            const featuredContainer = document.getElementById('featuredGames');
+            const popularContainer = document.getElementById('popularGames');
+            
+            if (featuredContainer) {
+                featuredContainer.innerHTML = featuredGamesList.map(game => createGameCard(game, true)).join('');
+            }
+            
+            if (popularContainer) {
+                popularContainer.innerHTML = popularGamesList.map(game => createGameCard(game, false)).join('');
+            }
+        }
+
+        function playGame(gameName) {
+            const isLogged = localStorage.getItem('isLogged');
+            if (isLogged === 'true') {
+                showToast(`🎮 Iniciando ${gameName}...`);
+            } else {
+                showToast('⚠️ Faça login para jogar!');
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1500);
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function subscribeNewsletter() {
+            const email = document.getElementById('newsletterEmail').value;
+            if (email && email.includes('@')) {
+                showToast('✅ Inscrito com sucesso! Você receberá novidades.');
+                document.getElementById('newsletterEmail').value = '';
+            } else {
+                showToast('❌ Digite um e-mail válido!');
+            }
+        }
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('open');
+            });
+        }
+
+        if (closeMenuBtn) {
+            closeMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+        }
+
+        // Close menu on outside click
+        document.addEventListener('click', (e) => {
+            if (mobileMenu && mobileMenu.classList.contains('open')) {
+                if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    mobileMenu.classList.remove('open');
+                }
+            }
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.game-card, .promo-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Load games
+        renderGames();
+
+        // Check login status on page load
+        window.addEventListener('load', () => {
+            const isLogged = localStorage.getItem('isLogged');
+            const userName = localStorage.getItem('userName');
+            if (isLogged === 'true' && userName) {
+                // Update UI to show logged in state if needed
+                console.log('Usuário logado:', userName);
+            }
+        });
+    </script>
 </body>
 </html>
