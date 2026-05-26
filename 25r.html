@@ -4,23 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Depósito R$ 25,00</title>
+    <title>Pagamento R$ 25,00</title>
 </head>
 <body>
-    <div class="payment-container">
-        <h2>Pagamento via PIX</h2>
-        <p style="font-size: 1.2rem;">Valor a depositar: <span style="color: #f0b90b; font-weight: bold;">R$ 25,00</span></p>
+    <div class="payment-box">
+        <h3>Finalize seu Depósito</h3>
+        <div class="value-tag">R$ 25,00</div>
         
-        <!-- Imagem do seu QR Code de 25 reais -->
-        <img src="qr-25.png" alt="QR Code 25 Reais" class="qr-img">
+        <div class="qr-frame">
+            <img src="qr-10.png" alt="QR Code">
+        </div>
         
-        <p>Aponte a câmera do seu celular para o código acima.</p>
-        <p style="font-size: 13px; color: #aaa; margin-top: 15px;">
-            O crédito será liberado automaticamente após a confirmação bancária.
-        </p>
+        <p style="font-size: 14px; margin-bottom: 20px;">Escaneie o QR Code acima para confirmar o pagamento via PIX.</p>
         
-        <br>
-        <a href="deposito.html" class="btn btn-login" style="display: inline-block; text-decoration: none;">Voltar</a>
+        <button onclick="alert('Código PIX Copiado!')" class="btn-deposit" style="width: 100%; background: #2d3748; color: white;">COPIAR CHAVE PIX</button>
+        
+        <a href="deposito.html" style="color: var(--text-dim); text-decoration: none; display: block; margin-top: 20px;">Alterar Valor</a>
     </div>
 </body>
 </html>
