@@ -3,23 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento R$30 - LuxBet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <title>Pagamento R$ 30,00</title>
 </head>
 <body>
-    <div class="payment-box">
-        <h3>Finalize seu Depósito</h3>
-        <div class="value-tag">R$ 30,00</div>
-        
-        <div class="qr-frame">
-            <img src="qr-10.png" alt="QR Code">
+    <div class="payment-container">
+        <div class="payment-card">
+            <div class="payment-header">
+                <i class="fas fa-trophy"></i>
+                <h2>Depósito de R$30</h2>
+                <p>Escaneie o QR Code abaixo para pagar via PIX</p>
+            </div>
+            
+            <div class="qr-wrapper">
+                <img src="qr-30.png" alt="QR Code PIX R$30" id="qrImage">
+            </div>
+            
+            <div class="payment-details">
+                <div class="detail-item">
+                    <span>Valor:</span>
+                    <strong>R$ 30,00</strong>
+                </div>
+                <div class="detail-item">
+                    <span>Bônus:</span>
+                    <strong>+30 Rodadas Grátis + 30%</strong>
+                </div>
+                <div class="detail-item">
+                    <span>Status:</span>
+                    <strong class="status-pending">Aguardando Pagamento</strong>
+                </div>
+            </div>
+            
+            <div class="payment-instructions">
+                <h4><i class="fas fa-info-circle"></i> Instruções:</h4>
+                <ol>
+                    <li>Abra o aplicativo do seu banco</li>
+                    <li>Escolha a opção PIX</li>
+                    <li>Selecione "Ler QR Code"</li>
+                    <li>Escaneie o código acima</li>
+                    <li>Confirme o pagamento de R$30</li>
+                </ol>
+            </div>
+            
+            <button class="btn-home" onclick="window.location.href='deposito.html'">
+                <i class="fas fa-arrow-left"></i> Voltar para Depósitos
+            </button>
         </div>
-        
-        <p style="font-size: 14px; margin-bottom: 20px;">Escaneie o QR Code acima para confirmar o pagamento via PIX.</p>
-        
-        <button onclick="alert('Código PIX Copiado!')" class="btn-deposit" style="width: 100%; background: #2d3748; color: white;">COPIAR CHAVE PIX</button>
-        
-        <a href="deposito.html" style="color: var(--text-dim); text-decoration: none; display: block; margin-top: 20px;">Alterar Valor</a>
     </div>
 </body>
 </html>
