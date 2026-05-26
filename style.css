@@ -1,76 +1,113 @@
-/* style.css */
+/* Importando fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
 :root {
-    --primary-color: #f0b90b; /* Amarelo Betano/Binance */
-    --bg-dark: #0b0e11;
-    --card-bg: #1e2329;
-    --text-white: #ffffff;
+    --gold: #f0b90b;
+    --gold-hover: #d4a308;
+    --bg-main: #0f1218;
+    --bg-card: #1c212a;
+    --bg-accent: #2b313d;
+    --text-main: #ffffff;
+    --text-dim: #94a3b8;
+    --success: #00ff88;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-white);
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
+body { background-color: var(--bg-main); color: var(--text-main); overflow-x: hidden; }
+
+/* Header Estilo App */
 header {
+    background: rgba(15, 18, 24, 0.95);
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 5%;
-    background: #181a20;
-    border-bottom: 1px solid #333;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0; width: 100%; z-index: 1000;
+    border-bottom: 1px solid #2d3748;
 }
 
-.logo { font-size: 24px; font-weight: bold; color: var(--primary-color); }
+.logo { font-weight: 800; font-size: 1.5rem; color: var(--gold); letter-spacing: -1px; }
 
-.nav-buttons .btn {
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-left: 10px;
+.auth-btns .btn-login { color: white; text-decoration: none; margin-right: 15px; font-weight: 600; font-size: 14px; }
+
+.btn-deposit {
+    background: linear-gradient(135deg, var(--gold), #ff8c00);
+    color: #000; border: none; padding: 10px 20px;
+    border-radius: 8px; font-weight: 700; cursor: pointer;
+    text-decoration: none; transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(240, 185, 11, 0.3);
 }
 
-.btn-login { color: white; border: 1px solid #555; }
-.btn-cadastro { background: var(--primary-color); color: black; }
+.btn-deposit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(240, 185, 11, 0.5); }
 
-/* Grid de Jogos */
-.container { padding: 20px 5%; }
+/* Banner de Destaque */
+.hero {
+    margin-top: 80px; padding: 20px;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://img.freepik.com/fotos-gratis/renderizacao-3d-do-conceito-de-cassino_23-2148890714.jpg');
+    background-size: cover; height: 200px;
+    border-radius: 15px; margin-inline: 15px;
+    display: flex; flex-direction: column; justify-content: center;
+}
+
+.hero h1 { font-size: 1.8rem; line-height: 1.2; }
+.hero span { color: var(--gold); }
+
+/* Seção de Jogos */
+.section-title { padding: 25px 20px 10px; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+.section-title::before { content: ''; width: 4px; height: 20px; background: var(--gold); border-radius: 2px; }
+
 .game-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px; padding: 0 15px 100px;
 }
 
 .game-card {
-    background: var(--card-bg);
-    border-radius: 10px;
+    background: var(--bg-card);
+    border-radius: 12px;
     overflow: hidden;
-    text-align: center;
-    transition: transform 0.3s;
+    position: relative;
+    transition: 0.3s;
+    border: 1px solid #2d3748;
 }
 
-.game-card:hover { transform: scale(1.05); }
-.game-card img { width: 100%; height: 200px; object-fit: cover; }
-.game-card p { padding: 10px; font-weight: bold; }
+.game-card:active { transform: scale(0.95); }
 
-/* Páginas de Depósito */
-.payment-container {
-    max-width: 400px;
-    margin: 50px auto;
-    background: var(--card-bg);
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
+.game-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+
+.game-badge {
+    position: absolute; top: 8px; right: 8px;
+    background: red; color: white; font-size: 10px;
+    padding: 2px 6px; border-radius: 4px; font-weight: bold;
 }
 
-.qr-img { width: 250px; margin: 20px 0; border: 5px solid white; border-radius: 10px; }
-
-/* Estilo Mobile */
-@media (max-width: 600px) {
-    .game-grid { grid-template-columns: repeat(2, 1fr); }
-    .logo { font-size: 18px; }
+/* Footer de Navegação Mobile */
+.mobile-nav {
+    position: fixed; bottom: 0; width: 100%;
+    background: #1c212a; display: flex;
+    justify-content: space-around; padding: 12px;
+    border-top: 1px solid #2d3748; z-index: 1000;
 }
+
+.nav-item { text-align: center; color: var(--text-dim); text-decoration: none; font-size: 12px; }
+.nav-item.active { color: var(--gold); }
+
+/* Pagamentos Profissionais */
+.payment-box {
+    max-width: 450px; margin: 100px auto;
+    background: var(--bg-card); padding: 30px;
+    border-radius: 20px; text-align: center;
+    border: 1px solid var(--bg-accent);
+}
+
+.qr-frame {
+    background: white; padding: 15px;
+    border-radius: 15px; display: inline-block;
+    margin: 20px 0;
+}
+.qr-frame img { width: 200px; }
+
+.value-tag { font-size: 2rem; font-weight: 800; color: var(--success); margin: 10px 0; }
