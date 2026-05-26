@@ -2,20 +2,85 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Depósito - LuxBet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <title>Depositar - WinCassino</title>
 </head>
 <body>
-    <div class="payment-box">
-        <h2 style="color: var(--gold);">DEPOSITAR VIA PIX</h2>
-        <p style="color: var(--text-dim); margin-bottom: 25px;">Escolha um valor para recarregar sua banca imediatamente.</p>
-        
-        <a href="10r.html" class="btn-deposit" style="display: block; margin-bottom: 15px; padding: 15px;">DEPOSITAR R$ 10,00</a>
-        <a href="25r.html" class="btn-deposit" style="display: block; margin-bottom: 15px; padding: 15px;">DEPOSITAR R$ 25,00</a>
-        <a href="30r.html" class="btn-deposit" style="display: block; margin-bottom: 15px; padding: 15px;">DEPOSITAR R$ 30,00</a>
-        
-        <a href="index.html" style="color: var(--text-dim); text-decoration: none; font-size: 14px; display: block; margin-top: 20px;">Voltar ao lobby</a>
+    <div class="deposit-header-nav">
+        <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Voltar</a>
+        <div class="logo-small">LUX<span>BET</span></div>
     </div>
+    
+    <div class="deposit-container">
+        <div class="deposit-header">
+            <h1><i class="fas fa-coins"></i> Recarregar Saldo</h1>
+            <p>Escolha o valor e faça o pagamento via PIX</p>
+        </div>
+        
+        <div class="plans-grid">
+            <div class="plan-card animate-scale" data-value="10">
+                <div class="plan-icon"><i class="fas fa-gem"></i></div>
+                <div class="plan-value">R$ <span>10</span></div>
+                <div class="plan-bonus">🎁 +5 Rodadas Grátis</div>
+                <div class="plan-pix">PIX Instantâneo</div>
+                <button class="btn-plan" onclick="window.location.href='10r.html'">
+                    ACESSAR QR CODE <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            
+            <div class="plan-card animate-scale" data-value="25">
+                <div class="plan-icon"><i class="fas fa-crown"></i></div>
+                <div class="plan-value">R$ <span>25</span></div>
+                <div class="plan-bonus">🎁 +15 Rodadas Grátis + Bônus 20%</div>
+                <div class="plan-pix">PIX Instantâneo</div>
+                <button class="btn-plan" onclick="window.location.href='25r.html'">
+                    ACESSAR QR CODE <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            
+            <div class="plan-card animate-scale" data-value="30">
+                <div class="plan-icon"><i class="fas fa-trophy"></i></div>
+                <div class="plan-value">R$ <span>30</span></div>
+                <div class="plan-bonus">🎁 +30 Rodadas Grátis + Bônus 30%</div>
+                <div class="plan-pix">PIX Instantâneo</div>
+                <button class="btn-plan" onclick="window.location.href='30r.html'">
+                    ACESSAR QR CODE <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="deposit-info">
+            <div class="info-card">
+                <i class="fas fa-shield-alt"></i>
+                <h4>Pagamento Seguro</h4>
+                <p>Transações criptografadas e protegidas</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-bolt"></i>
+                <h4>Crédito Instantâneo</h4>
+                <p>Seu saldo cai na hora após o pagamento</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-headset"></i>
+                <h4>Suporte 24/7</h4>
+                <p>Atendimento para dúvidas sobre depósitos</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Verificar login
+        const isLogged = localStorage.getItem('isLogged');
+        if (!isLogged) {
+            setTimeout(() => {
+                if (confirm('⚠️ Faça login ou cadastre-se antes de depositar!')) {
+                    window.location.href = 'login.html';
+                }
+            }, 500);
+        }
+    </script>
 </body>
 </html>
