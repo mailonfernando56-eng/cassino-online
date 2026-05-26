@@ -1,108 +1,88 @@
-:root {
-    --bg-dark: #0b0e11;
-    --bg-card: #15191d;
-    --primary: #00c853;
-    --text-main: #ffffff;
-    --text-muted: #98a1a8;
-    --border: #2a2e33;
-}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>LuxPlay - Cassino Mobile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+<div class="top-nav">
+    <div class="logo">LUXPLAY</div>
+    <div class="nav-menu">
+        <a href="#">Início</a>
+        <a href="#">Slots</a>
+        <a href="#">Live</a>
+        <a href="#">Promoções</a>
+    </div>
+    <div class="auth-btns">
+        <button class="btn-login" id="loginBtn">Entrar</button>
+        <button class="btn-signup" id="signupBtn">Cadastro</button>
+    </div>
+</div>
 
-body { 
-    background-color: var(--bg-dark); 
-    color: var(--text-main); 
-    display: flex; 
-    flex-direction: column; 
-    min-height: 100vh;
-}
+<div class="main-layout">
+    <div class="sidebar">
+        <div class="sidebar-item"><i class="fas fa-home"></i></div>
+        <div class="sidebar-item"><i class="fas fa-dice-d6"></i></div>
+        <div class="sidebar-item"><i class="fas fa-crown"></i></div>
+        <div class="sidebar-item"><i class="fas fa-user"></i></div>
+        <div class="sidebar-item"><i class="fas fa-gift"></i></div>
+    </div>
 
-/* NAVBAR SUPERIOR ROBUSTA */
-.top-nav {
-    height: 70px;
-    background: var(--bg-card);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 30px;
-    border-bottom: 2px solid var(--primary);
-    position: fixed;
-    top: 0; width: 100%; z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-}
+    <div class="main-content">
+        <div class="search-bar-mobile">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Buscar jogos, slots, jackpot...">
+        </div>
 
-.logo { font-size: 26px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -1px; }
+        <div class="feature-banner">
+            <div class="feature-text">
+                <h4>🔥 Bônus de Boas-Vindas</h4>
+                <p>100% até R$500 + rodadas grátis</p>
+            </div>
+            <div class="feature-btn" id="bonusBtn">Resgatar</div>
+        </div>
 
-.nav-menu { display: flex; gap: 25px; }
-.nav-menu a { color: var(--text-muted); text-decoration: none; font-weight: 600; font-size: 14px; transition: 0.3s; }
-.nav-menu a:hover { color: var(--primary); }
+        <div class="section-header">
+            <h2><i class="fas fa-fire"></i> Jogos Populares</h2>
+            <div class="view-all">Ver todos <i class="fas fa-chevron-right"></i></div>
+        </div>
 
-.auth-btns { display: flex; gap: 15px; align-items: center; }
-.btn-login { background: transparent; color: white; border: 1px solid var(--border); padding: 10px 22px; border-radius: 6px; cursor: pointer; font-weight: 600; }
-.btn-signup { background: var(--primary); color: #000; border: none; padding: 10px 22px; border-radius: 6px; font-weight: 700; cursor: pointer; box-shadow: 0 0 15px rgba(0, 200, 83, 0.3); }
+        <div class="games-grid" id="gamesGrid"></div>
 
-/* SIDEBAR E CONTEÚDO */
-.main-layout { display: flex; margin-top: 70px; flex: 1; }
+        <div class="section-header" style="margin-top: 20px;">
+            <h2><i class="fas fa-star"></i> Novidades da Semana</h2>
+            <div class="view-all">Novos</div>
+        </div>
+        <div class="games-grid" id="newGamesGrid"></div>
+    </div>
+</div>
 
-.sidebar {
-    width: 80px;
-    background: var(--bg-card);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 30px;
-    gap: 35px;
-    border-right: 1px solid var(--border);
-    position: fixed;
-    height: calc(100vh - 70px);
-}
+<div class="bottom-nav">
+    <div class="bottom-item active" data-tab="home">
+        <i class="fas fa-home"></i>
+        <span>Início</span>
+    </div>
+    <div class="bottom-item" data-tab="slots">
+        <i class="fas fa-dice-d6"></i>
+        <span>Slots</span>
+    </div>
+    <div class="bottom-item" data-tab="live">
+        <i class="fas fa-crown"></i>
+        <span>Live</span>
+    </div>
+    <div class="bottom-item" data-tab="profile">
+        <i class="fas fa-user"></i>
+        <span>Perfil</span>
+    </div>
+</div>
 
-.sidebar-item { 
-    font-size: 24px; 
-    color: var(--text-muted); 
-    cursor: pointer; 
-    transition: 0.3s; 
-    position: relative;
-}
+<div id="toastMsg" class="toast-msg"></div>
 
-.sidebar-item:hover { color: var(--primary); transform: scale(1.2); }
-
-/* GRID DE JOGOS ESTILO CASSINO */
-.main-content { margin-left: 80px; padding: 40px; flex: 1; }
-.section-header { margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between; }
-.section-header h2 { font-size: 22px; display: flex; align-items: center; gap: 10px; }
-
-.games-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 25px;
-}
-
-.game-card {
-    background: var(--bg-card);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 1px solid var(--border);
-    cursor: pointer;
-    position: relative;
-}
-
-.game-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-.game-card img { width: 100%; height: 280px; object-fit: cover; transition: 0.5s; }
-.game-card:hover img { filter: brightness(0.4); }
-
-.play-btn {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--primary);
-    color: #000;
-    padding: 12px 25px;
-    border-radius: 30px;
-    font-weight: 800;
-    opacity: 0;
-    transition: 0.3s;
-}
-
-.game-card:hover .play-btn { opacity: 1; }
+<script src="script.js"></script>
+</body>
+</html>
