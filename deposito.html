@@ -2,85 +2,748 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Depósito - LuxBet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Depósito - LuxBet | Recarregue seu saldo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0c10;
+            --bg-darker: #05070a;
+            --bg-card: #12161c;
+            --bg-card-hover: #1a1e28;
+            --primary: #00c853;
+            --primary-dark: #009624;
+            --primary-glow: rgba(0, 200, 83, 0.3);
+            --secondary: #ffd700;
+            --accent: #ff6b35;
+            --text-primary: #ffffff;
+            --text-secondary: #8a93a3;
+            --text-muted: #5a6373;
+            --border: #2a2f3a;
+            --border-light: #1f242c;
+            --gradient: linear-gradient(135deg, #00c853 0%, #ffd700 100%);
+            --gradient-card: linear-gradient(135deg, rgba(18, 22, 28, 0.95), rgba(10, 12, 16, 0.95));
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --shadow-glow: 0 0 30px rgba(0, 200, 83, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 200, 83, 0.08), transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            bottom: -50%;
+            right: -50%;
+            background: radial-gradient(circle at 70% 80%, rgba(255, 215, 0, 0.05), transparent 70%);
+            animation: rotateReverse 25s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateReverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        /* Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(0, 200, 83, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+        }
+
+        /* Header Nav */
+        .deposit-header-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 12, 16, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .back-home {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 10px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-home:hover {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+        }
+
+        .logo-small {
+            font-size: 24px;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo-small span {
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: var(--secondary);
+        }
+
+        /* Main Container */
+        .deposit-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 24px 80px;
+        }
+
+        /* Deposit Header */
+        .deposit-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .deposit-header h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .deposit-header h1 i {
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: var(--primary);
+            margin-right: 12px;
+        }
+
+        .deposit-header p {
+            color: var(--text-secondary);
+            font-size: 18px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Plans Grid */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .plan-card {
+            background: var(--gradient-card);
+            backdrop-filter: blur(10px);
+            border-radius: 28px;
+            padding: 40px 32px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            animation: fadeInUp 0.8s ease;
+            animation-fill-mode: both;
+        }
+
+        .plan-card:nth-child(1) { animation-delay: 0.1s; }
+        .plan-card:nth-child(2) { animation-delay: 0.2s; }
+        .plan-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 200, 83, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .plan-card:hover::before {
+            left: 100%;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .plan-card[data-value="10"]:hover {
+            box-shadow: 0 0 40px rgba(0, 200, 83, 0.3);
+        }
+
+        .plan-card[data-value="25"]:hover {
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .plan-card[data-value="30"]:hover {
+            box-shadow: 0 0 40px rgba(255, 107, 53, 0.3);
+        }
+
+        .plan-icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+
+        .plan-card[data-value="10"] .plan-icon i { color: var(--primary); }
+        .plan-card[data-value="25"] .plan-icon i { color: var(--secondary); }
+        .plan-card[data-value="30"] .plan-icon i { color: var(--accent); }
+
+        .plan-value {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .plan-card[data-value="10"] .plan-value { color: var(--primary); }
+        .plan-card[data-value="25"] .plan-value { color: var(--secondary); }
+        .plan-card[data-value="30"] .plan-value { color: var(--accent); }
+
+        .plan-value span {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .plan-bonus {
+            background: rgba(0, 200, 83, 0.1);
+            padding: 8px 16px;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 16px 0;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .plan-card[data-value="10"] .plan-bonus { background: rgba(0, 200, 83, 0.1); color: var(--primary); }
+        .plan-card[data-value="25"] .plan-bonus { background: rgba(255, 215, 0, 0.1); color: var(--secondary); }
+        .plan-card[data-value="30"] .plan-bonus { background: rgba(255, 107, 53, 0.1); color: var(--accent); }
+
+        .plan-pix {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .plan-pix i {
+            font-size: 18px;
+        }
+
+        .btn-plan {
+            width: 100%;
+            background: var(--gradient);
+            border: none;
+            padding: 14px 24px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-plan:hover {
+            transform: scale(1.02);
+            filter: brightness(1.05);
+            gap: 12px;
+        }
+
+        /* Info Cards */
+        .deposit-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            background: rgba(18, 22, 28, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 28px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            animation: fadeInUp 0.8s ease;
+            animation-delay: 0.4s;
+            animation-fill-mode: both;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .info-card i {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .info-card:nth-child(1) i { color: var(--primary); }
+        .info-card:nth-child(2) i { color: var(--secondary); }
+        .info-card:nth-child(3) i { color: var(--accent); }
+
+        .info-card h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .info-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Promo Banner */
+        .promo-banner {
+            background: linear-gradient(135deg, rgba(0, 200, 83, 0.1), rgba(255, 215, 0, 0.1));
+            border-radius: 20px;
+            padding: 24px;
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            border: 1px solid rgba(0, 200, 83, 0.3);
+            animation: fadeInUp 0.8s ease;
+            animation-delay: 0.5s;
+            animation-fill-mode: both;
+        }
+
+        .promo-banner-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .promo-banner-content i {
+            font-size: 32px;
+            color: var(--primary);
+        }
+
+        .promo-banner-content h3 {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .promo-banner-content p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .promo-banner-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .promo-banner-btn:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .deposit-container {
+                padding: 90px 16px 60px;
+            }
+
+            .deposit-header h1 {
+                font-size: 32px;
+            }
+
+            .deposit-header p {
+                font-size: 14px;
+            }
+
+            .plans-grid {
+                gap: 20px;
+            }
+
+            .plan-card {
+                padding: 28px 20px;
+            }
+
+            .plan-value {
+                font-size: 42px;
+            }
+
+            .deposit-info {
+                gap: 16px;
+            }
+
+            .info-card {
+                padding: 20px;
+            }
+
+            .promo-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .promo-banner-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .deposit-header-nav {
+                padding: 12px 16px;
+            }
+
+            .back-home {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .logo-small {
+                font-size: 20px;
+            }
+
+            .plan-card {
+                padding: 24px 16px;
+            }
+
+            .plan-icon {
+                font-size: 40px;
+            }
+
+            .plan-value {
+                font-size: 36px;
+            }
+
+            .btn-plan {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .loading {
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+    </style>
 </head>
 <body>
-    <div class="deposit-header-nav">
-        <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Voltar</a>
-        <div class="logo-small">LUX<span>BET</span></div>
+
+<div class="bg-animation"></div>
+<div class="particles" id="particles"></div>
+
+<div class="deposit-header-nav">
+    <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+    <div class="logo-small">LUX<span>BET</span></div>
+</div>
+
+<div class="deposit-container">
+    <div class="deposit-header">
+        <h1><i class="fas fa-coins"></i> Recarregar Saldo</h1>
+        <p>Escolha o valor e faça o pagamento via PIX de forma segura</p>
     </div>
     
-    <div class="deposit-container">
-        <div class="deposit-header">
-            <h1><i class="fas fa-coins"></i> Recarregar Saldo</h1>
-            <p>Escolha o valor e faça o pagamento via PIX</p>
+    <div class="plans-grid">
+        <div class="plan-card" data-value="10">
+            <div class="plan-icon"><i class="fas fa-gem"></i></div>
+            <div class="plan-value">R$ <span>10</span></div>
+            <div class="plan-bonus">🎁 +5 Rodadas Grátis</div>
+            <div class="plan-pix"><i class="fab fa-pix"></i> PIX Instantâneo</div>
+            <button class="btn-plan" onclick="handleDeposit(10)">
+                ACESSAR QR CODE <i class="fas fa-arrow-right"></i>
+            </button>
         </div>
         
-        <div class="plans-grid">
-            <div class="plan-card animate-scale" data-value="10">
-                <div class="plan-icon"><i class="fas fa-gem"></i></div>
-                <div class="plan-value">R$ <span>10</span></div>
-                <div class="plan-bonus">🎁 +5 Rodadas Grátis</div>
-                <div class="plan-pix">PIX Instantâneo</div>
-                <button class="btn-plan" onclick="window.location.href='10r.html'">
-                    ACESSAR QR CODE <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-            
-            <div class="plan-card animate-scale" data-value="25">
-                <div class="plan-icon"><i class="fas fa-crown"></i></div>
-                <div class="plan-value">R$ <span>25</span></div>
-                <div class="plan-bonus">🎁 +15 Rodadas Grátis + Bônus 20%</div>
-                <div class="plan-pix">PIX Instantâneo</div>
-                <button class="btn-plan" onclick="window.location.href='25r.html'">
-                    ACESSAR QR CODE <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-            
-            <div class="plan-card animate-scale" data-value="30">
-                <div class="plan-icon"><i class="fas fa-trophy"></i></div>
-                <div class="plan-value">R$ <span>30</span></div>
-                <div class="plan-bonus">🎁 +30 Rodadas Grátis + Bônus 30%</div>
-                <div class="plan-pix">PIX Instantâneo</div>
-                <button class="btn-plan" onclick="window.location.href='30r.html'">
-                    ACESSAR QR CODE <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
+        <div class="plan-card" data-value="25">
+            <div class="plan-icon"><i class="fas fa-crown"></i></div>
+            <div class="plan-value">R$ <span>25</span></div>
+            <div class="plan-bonus">🎁 +15 Rodadas Grátis + Bônus 20%</div>
+            <div class="plan-pix"><i class="fab fa-pix"></i> PIX Instantâneo</div>
+            <button class="btn-plan" onclick="handleDeposit(25)">
+                ACESSAR QR CODE <i class="fas fa-arrow-right"></i>
+            </button>
         </div>
         
-        <div class="deposit-info">
-            <div class="info-card">
-                <i class="fas fa-shield-alt"></i>
-                <h4>Pagamento Seguro</h4>
-                <p>Transações criptografadas e protegidas</p>
-            </div>
-            <div class="info-card">
-                <i class="fas fa-bolt"></i>
-                <h4>Crédito Instantâneo</h4>
-                <p>Seu saldo cai na hora após o pagamento</p>
-            </div>
-            <div class="info-card">
-                <i class="fas fa-headset"></i>
-                <h4>Suporte 24/7</h4>
-                <p>Atendimento para dúvidas sobre depósitos</p>
-            </div>
+        <div class="plan-card" data-value="30">
+            <div class="plan-icon"><i class="fas fa-trophy"></i></div>
+            <div class="plan-value">R$ <span>30</span></div>
+            <div class="plan-bonus">🎁 +30 Rodadas Grátis + Bônus 30%</div>
+            <div class="plan-pix"><i class="fab fa-pix"></i> PIX Instantâneo</div>
+            <button class="btn-plan" onclick="handleDeposit(30)">
+                ACESSAR QR CODE <i class="fas fa-arrow-right"></i>
+            </button>
         </div>
     </div>
     
-    <script>
-        // Verificar login
+    <div class="deposit-info">
+        <div class="info-card">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Pagamento Seguro</h4>
+            <p>Transações criptografadas e protegidas com SSL</p>
+        </div>
+        <div class="info-card">
+            <i class="fas fa-bolt"></i>
+            <h4>Crédito Instantâneo</h4>
+            <p>Seu saldo cai na hora após a confirmação do pagamento</p>
+        </div>
+        <div class="info-card">
+            <i class="fas fa-headset"></i>
+            <h4>Suporte 24/7</h4>
+            <p>Atendimento especializado para dúvidas sobre depósitos</p>
+        </div>
+    </div>
+
+    <div class="promo-banner">
+        <div class="promo-banner-content">
+            <i class="fas fa-gift"></i>
+            <div>
+                <h3>Bônus Especial de Depósito</h3>
+                <p>Primeiro depósito ganha 100% de bônus até R$500</p>
+            </div>
+        </div>
+        <button class="promo-banner-btn" onclick="window.location.href='cadastro.html'">
+            Resgatar Bônus <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+</div>
+
+<script>
+    // Criar partículas
+    function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 4 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+    }
+
+    // Show toast notification
+    function showToast(message, isError = false) {
+        const toast = document.createElement('div');
+        toast.textContent = message;
+        toast.style.position = 'fixed';
+        toast.style.bottom = '30px';
+        toast.style.left = '50%';
+        toast.style.transform = 'translateX(-50%)';
+        toast.style.background = isError ? '#f44336' : '#00c853';
+        toast.style.color = isError ? '#fff' : '#000';
+        toast.style.padding = '12px 24px';
+        toast.style.borderRadius = '40px';
+        toast.style.fontWeight = '600';
+        toast.style.zIndex = '9999';
+        toast.style.animation = 'fadeInUp 0.3s ease';
+        toast.style.fontFamily = "'Inter', sans-serif";
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+
+    // Handle deposit
+    function handleDeposit(value) {
         const isLogged = localStorage.getItem('isLogged');
-        if (!isLogged) {
+        
+        // Adicionar efeito de clique no card
+        const card = document.querySelector(`.plan-card[data-value="${value}"]`);
+        if (card) {
+            card.style.transform = 'scale(0.98)';
             setTimeout(() => {
-                if (confirm('⚠️ Faça login ou cadastre-se antes de depositar!')) {
+                card.style.transform = '';
+            }, 150);
+        }
+        
+        if (!isLogged || isLogged !== 'true') {
+            showToast('⚠️ Faça login ou cadastre-se antes de depositar!', true);
+            setTimeout(() => {
+                if (confirm('Você precisa estar logado para fazer um depósito. Deseja fazer login agora?')) {
                     window.location.href = 'login.html';
                 }
             }, 500);
+            return;
         }
-    </script>
+        
+        // Redirecionar para a página do QR Code
+        showToast(`🎉 Redirecionando para pagamento de R$ ${value}...`);
+        setTimeout(() => {
+            window.location.href = `${value}r.html`;
+        }, 800);
+    }
+
+    // Animação de entrada dos cards
+    function animateCards() {
+        const cards = document.querySelectorAll('.plan-card, .info-card, .promo-banner');
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+    }
+
+    // Verificar login ao carregar a página
+    document.addEventListener('DOMContentLoaded', () => {
+        createParticles();
+        animateCards();
+        
+        // Estilos iniciais para animação
+        const cards = document.querySelectorAll('.plan-card, .info-card, .promo-banner');
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        });
+        
+        // Verificar se está logado e mostrar mensagem amigável
+        const isLogged = localStorage.getItem('isLogged');
+        const userName = localStorage.getItem('userName');
+        
+        if (isLogged === 'true' && userName) {
+            console.log(`Bem-vindo ${userName}! Faça seu depósito.`);
+        } else {
+            // Mostrar mensagem sutil sem interromper
+            setTimeout(() => {
+                const banner = document.querySelector('.promo-banner');
+                if (banner) {
+                    const subtleMsg = document.createElement('div');
+                    subtleMsg.style.cssText = `
+                        position: fixed;
+                        bottom: 20px;
+                        right: 20px;
+                        background: rgba(0,0,0,0.8);
+                        backdrop-filter: blur(10px);
+                        padding: 12px 20px;
+                        border-radius: 40px;
+                        font-size: 12px;
+                        border-left: 3px solid #00c853;
+                        z-index: 999;
+                        animation: fadeInUp 0.5s ease;
+                        pointer-events: none;
+                    `;
+                    subtleMsg.innerHTML = '<i class="fas fa-info-circle"></i> Faça login para depositar';
+                    document.body.appendChild(subtleMsg);
+                    setTimeout(() => subtleMsg.remove(), 5000);
+                }
+            }, 2000);
+        }
+    });
+</script>
+
 </body>
 </html>
