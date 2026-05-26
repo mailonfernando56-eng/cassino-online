@@ -118,7 +118,7 @@
             <div class="container">
                 <div class="section-header">
                     <div class="section-title">
-                        <h2><i class="fas fa-star"></i> Mais Jogados</h2>
+                        <h2><i class="fas fa-star"></i> Todos os Jogos</h2>
                         <p>Escolha seu jogo favorito e comece a ganhar</p>
                     </div>
                 </div>
@@ -202,11 +202,11 @@
                     </div>
                     <div class="footer-links">
                         <h4>Jogos</h4>
-                        <a href="#">Fortune Tiger</a>
-                        <a href="#">Roleta</a>
-                        <a href="#">Aviator</a>
-                        <a href="#">Mines</a>
-                        <a href="#">Blackjack</a>
+                        <a href="#" onclick="playGame('Fortune Tiger')">Fortune Tiger</a>
+                        <a href="#" onclick="playGame('Fortune Ox')">Fortune Ox</a>
+                        <a href="#" onclick="playGame('Fortune Rabbit')">Fortune Rabbit</a>
+                        <a href="#" onclick="playGame('Fortune Dragon')">Fortune Dragon</a>
+                        <a href="#" onclick="playGame('Aviator')">Aviator</a>
                     </div>
                     <div class="footer-links">
                         <h4>Suporte</h4>
@@ -227,29 +227,56 @@
     <div id="toast" class="toast"></div>
 
     <script>
-        // Games Data
-        const featuredGamesList = [
-            { id: 1, name: "Fortune Tiger", category: "Slot", img: "imagens_jogos_cassino/fortune-tiger.jpg", description: "O jogo mais famoso do momento", bgColor: "#ff6b35" },
-            { id: 2, name: "Roleta Premium", category: "Roleta", img: "imagens_jogos_cassino/roleta.jpg", description: "Roleta ao vivo com dealers reais", bgColor: "#00c853" },
-            { id: 3, name: "Fortune Ox", category: "Slot", img: "imagens_jogos_cassino/fortune-ox.jpg", description: "Multiplique seus ganhos", bgColor: "#ffd700" },
-            { id: 4, name: "Aviator", category: "Crash", img: "imagens_jogos_cassino/aviator.jpg", description: "O jogo de avião mais emocionante", bgColor: "#2196f3" }
+        // Lista completa de jogos com imagens
+        const allGames = [
+            { id: 1, name: "Fortune Tiger", category: "Slot", img: "imagens_jogos_cassino/fortune-tiger.jpg", description: "O tigre da sorte", featured: true },
+            { id: 2, name: "Fortune Snake", category: "Slot", img: "imagens_jogos_cassino/fortune-snake.jpg", description: "A serpente da fortuna", featured: true },
+            { id: 3, name: "Fortune Rabbit", category: "Slot", img: "imagens_jogos_cassino/fortune-rabbit.jpg", description: "Coelho da sorte", featured: true },
+            { id: 4, name: "Fortune Dragon", category: "Slot", img: "imagens_jogos_cassino/fortune-dragon.jpg", description: "Dragão da prosperidade", featured: true },
+            { id: 5, name: "Double Fortune", category: "Slot", img: "imagens_jogos_cassino/double-fortune.jpg", description: "Dobre sua sorte", featured: true },
+            { id: 6, name: "Fortune Ox", category: "Slot", img: "imagens_jogos_cassino/fortune-ox.jpg", description: "Boi da abundância", featured: true },
+            { id: 7, name: "Pinata Wins", category: "Slot", img: "imagens_jogos_cassino/pinata-wins.jpg", description: "Estoure a pinata", featured: false },
+            { id: 8, name: "Ganesha Gold", category: "Slot", img: "imagens_jogos_cassino/ganesha-gold.jpg", description: "Ouro de Ganesha", featured: false },
+            { id: 9, name: "Yo Dragon", category: "Slot", img: "imagens_jogos_cassino/yo-dragon.jpg", description: "Dragão Yo", featured: false },
+            { id: 10, name: "Roleta Premium", category: "Roleta", img: "imagens_jogos_cassino/roleta.jpg", description: "Roleta ao vivo com dealers reais", featured: false },
+            { id: 11, name: "Aviator", category: "Crash", img: "imagens_jogos_cassino/aviator.jpg", description: "O jogo de avião mais emocionante", featured: false },
+            { id: 12, name: "Mines", category: "Crash", img: "imagens_jogos_cassino/mines.jpg", description: "Encontre as gemas", featured: false },
+            { id: 13, name: "Blackjack", category: "Mesa", img: "imagens_jogos_cassino/blackjack.jpg", description: "21 - O clássico do cassino", featured: false },
+            { id: 14, name: "Bac Bo", category: "Mesa", img: "imagens_jogos_cassino/bac-bo.jpg", description: "Baccarat moderno", featured: false },
+            { id: 15, name: "Crash", category: "Crash", img: "imagens_jogos_cassino/crash.jpg", description: "Multiplicadores explosivos", featured: false }
         ];
 
-        const popularGamesList = [
-            { id: 5, name: "Fortune Rabbit", category: "Slot", img: "imagens_jogos_cassino/fortune-rabbit.jpg", description: "Sorte e prosperidade" },
-            { id: 6, name: "Fortune Dragon", category: "Slot", img: "imagens_jogos_cassino/fortune-dragon.jpg", description: "Dragões da fortuna" },
-            { id: 7, name: "Mines", category: "Crash", img: "imagens_jogos_cassino/mines.jpg", description: "Encontre as gemas" },
-            { id: 8, name: "Blackjack", category: "Mesa", img: "imagens_jogos_cassino/blackjack.jpg", description: "21 - O clássico do cassino" },
-            { id: 9, name: "Bac Bo", category: "Mesa", img: "imagens_jogos_cassino/bac-bo.jpg", description: "Baccarat moderno" },
-            { id: 10, name: "Crash", category: "Crash", img: "imagens_jogos_cassino/crash.jpg", description: "Multiplicadores explosivos" }
-        ];
+        // Jogos em destaque (primeiros 6)
+        const featuredGamesList = allGames.filter(game => game.featured === true).slice(0, 6);
+
+        // Todos os jogos
+        const popularGamesList = allGames;
 
         function createGameCard(game, isFeatured = false) {
+            // Cores diferentes para cada categoria
+            let categoryColor = '';
+            switch(game.category) {
+                case 'Slot':
+                    categoryColor = 'slot';
+                    break;
+                case 'Roleta':
+                    categoryColor = 'roleta';
+                    break;
+                case 'Crash':
+                    categoryColor = 'crash';
+                    break;
+                case 'Mesa':
+                    categoryColor = 'mesa';
+                    break;
+                default:
+                    categoryColor = 'slot';
+            }
+            
             return `
                 <div class="game-card" onclick="playGame('${game.name}')">
                     <div class="game-card-image">
-                        <img src="${game.img}" alt="${game.name}" onerror="this.src='https://picsum.photos/id/${game.id + 100}/300/200'">
-                        ${isFeatured ? '<div class="featured-badge"><i class="fas fa-fire"></i> Top</div>' : ''}
+                        <img src="${game.img}" alt="${game.name}" onerror="this.src='https://placehold.co/400x300/1a1e28/00c853?text=${encodeURIComponent(game.name)}'">
+                        ${isFeatured ? '<div class="featured-badge"><i class="fas fa-fire"></i> Destaque</div>' : ''}
                         <div class="game-hover">
                             <button class="play-now"><i class="fas fa-play"></i> Jogar Agora</button>
                         </div>
@@ -258,7 +285,8 @@
                         <h3>${game.name}</h3>
                         <p>${game.description}</p>
                         <div class="game-category">
-                            <span class="category-badge ${game.category === 'Slot' ? 'slot' : game.category === 'Roleta' ? 'roleta' : 'crash'}">
+                            <span class="category-badge ${categoryColor}">
+                                <i class="fas ${game.category === 'Slot' ? 'fa-dice-d6' : game.category === 'Roleta' ? 'fa-chart-line' : game.category === 'Crash' ? 'fa-chart-simple' : 'fa-club'}"></i>
                                 ${game.category}
                             </span>
                         </div>
@@ -284,11 +312,15 @@
             const isLogged = localStorage.getItem('isLogged');
             if (isLogged === 'true') {
                 showToast(`🎮 Iniciando ${gameName}...`);
+                // Aqui você pode adicionar redirecionamento para o jogo específico
+                console.log(`Abrindo jogo: ${gameName}`);
             } else {
                 showToast('⚠️ Faça login para jogar!');
                 setTimeout(() => {
-                    window.location.href = 'login.html';
-                }, 1500);
+                    if(confirm('Você precisa estar logado para jogar. Deseja fazer login agora?')) {
+                        window.location.href = 'login.html';
+                    }
+                }, 500);
             }
         }
 
@@ -303,9 +335,15 @@
 
         function subscribeNewsletter() {
             const email = document.getElementById('newsletterEmail').value;
-            if (email && email.includes('@')) {
+            if (email && email.includes('@') && email.includes('.')) {
                 showToast('✅ Inscrito com sucesso! Você receberá novidades.');
                 document.getElementById('newsletterEmail').value = '';
+                // Salvar email no localStorage
+                const emails = JSON.parse(localStorage.getItem('newsletterEmails') || '[]');
+                if (!emails.includes(email)) {
+                    emails.push(email);
+                    localStorage.setItem('newsletterEmails', JSON.stringify(emails));
+                }
             } else {
                 showToast('❌ Digite um e-mail válido!');
             }
@@ -363,8 +401,11 @@
             const isLogged = localStorage.getItem('isLogged');
             const userName = localStorage.getItem('userName');
             if (isLogged === 'true' && userName) {
-                // Update UI to show logged in state if needed
                 console.log('Usuário logado:', userName);
+                // Opcional: mostrar mensagem de boas-vindas
+                setTimeout(() => {
+                    showToast(`👋 Bem-vindo de volta, ${userName}!`);
+                }, 1000);
             }
         });
     </script>
