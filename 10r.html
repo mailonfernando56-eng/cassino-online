@@ -2,77 +2,750 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagamento R$10 - LuxBet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Pagamento R$10 - LuxBet | PIX Instantâneo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0c10;
+            --bg-darker: #05070a;
+            --bg-card: rgba(18, 22, 28, 0.95);
+            --primary: #00c853;
+            --primary-dark: #009624;
+            --primary-glow: rgba(0, 200, 83, 0.3);
+            --text-primary: #ffffff;
+            --text-secondary: #8a93a3;
+            --text-muted: #5a6373;
+            --border: #2a2f3a;
+            --gradient: linear-gradient(135deg, #00c853 0%, #00e676 100%);
+            --gradient-primary: linear-gradient(135deg, #00c853 0%, #69f0ae 100%);
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 40px rgba(0, 200, 83, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 200, 83, 0.08), transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            bottom: -50%;
+            right: -50%;
+            background: radial-gradient(circle at 70% 80%, rgba(105, 240, 174, 0.05), transparent 70%);
+            animation: rotateReverse 25s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateReverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        /* Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(0, 200, 83, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+        }
+
+        /* Payment Container */
+        .payment-container {
+            position: relative;
+            z-index: 1;
+            padding: 40px 20px;
+            width: 100%;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        /* Payment Card */
+        .payment-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .payment-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-glow);
+            transform: translateY(-5px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Payment Header */
+        .payment-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .payment-header i {
+            font-size: 64px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .payment-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .payment-header p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* QR Code Wrapper */
+        .qr-wrapper {
+            background: white;
+            padding: 24px;
+            border-radius: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 32px;
+            position: relative;
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(0, 200, 83, 0); }
+        }
+
+        .qr-wrapper img {
+            width: 220px;
+            height: 220px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .qr-wrapper img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Payment Details */
+        .payment-details {
+            background: rgba(0, 200, 83, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(0, 200, 83, 0.2);
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-item span {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .detail-item strong {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .detail-item strong:first-of-type {
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        .status-pending {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Bonus Highlight */
+        .bonus-highlight {
+            margin-top: 8px;
+            display: inline-block;
+            background: rgba(0, 200, 83, 0.15);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--primary);
+        }
+
+        /* Payment Instructions */
+        .payment-instructions {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 28px;
+            border: 1px solid var(--border);
+        }
+
+        .payment-instructions h4 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .payment-instructions h4 i {
+            color: var(--primary);
+        }
+
+        .payment-instructions ol {
+            padding-left: 20px;
+        }
+
+        .payment-instructions li {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .payment-instructions li::marker {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Button */
+        .btn-home {
+            width: 100%;
+            background: var(--gradient-primary);
+            border: none;
+            padding: 16px 24px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #000;
+        }
+
+        .btn-home:hover {
+            transform: scale(1.02);
+            filter: brightness(1.05);
+            gap: 15px;
+        }
+
+        /* Timer Section */
+        .timer-section {
+            text-align: center;
+            margin-top: 24px;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+        }
+
+        .timer-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .timer {
+            font-size: 28px;
+            font-weight: 800;
+            font-family: monospace;
+            color: var(--primary);
+        }
+
+        /* Success Animation */
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .success-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .success-content {
+            text-align: center;
+            animation: bounceIn 0.6s ease;
+        }
+
+        .success-content i {
+            font-size: 80px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .success-content h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .success-content p {
+            color: var(--text-secondary);
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .payment-card {
+                padding: 28px 20px;
+            }
+
+            .payment-header i {
+                font-size: 48px;
+            }
+
+            .payment-header h2 {
+                font-size: 24px;
+            }
+
+            .qr-wrapper {
+                padding: 16px;
+            }
+
+            .qr-wrapper img {
+                width: 180px;
+                height: 180px;
+            }
+
+            .detail-item strong {
+                font-size: 16px;
+            }
+
+            .timer {
+                font-size: 24px;
+            }
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            border-top-color: #000;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Pix Badge */
+        .pix-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0, 200, 83, 0.15);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 12px;
+        }
+
+        .pix-badge i {
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        /* Value Highlight */
+        .value-highlight {
+            position: relative;
+            display: inline-block;
+        }
+
+        .value-highlight::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .value-highlight:hover::before {
+            transform: scaleX(1);
+        }
+    </style>
 </head>
 <body>
-    <div class="payment-container">
-        <div class="payment-card">
-            <div class="payment-header">
-                <i class="fas fa-gem"></i>
-                <h2>Depósito de R$10</h2>
-                <p>Escaneie o QR Code abaixo para pagar via PIX</p>
+
+<div class="bg-animation"></div>
+<div class="particles" id="particles"></div>
+
+<div class="payment-container">
+    <div class="payment-card">
+        <div class="payment-header">
+            <i class="fas fa-gem"></i>
+            <h2>Depósito de <span class="value-highlight">R$10</span></h2>
+            <p>Escaneie o QR Code abaixo para pagar via PIX</p>
+        </div>
+        
+        <div class="qr-wrapper">
+            <img src="qr-10.png" alt="QR Code PIX R$10" id="qrImage">
+        </div>
+        
+        <div class="payment-details">
+            <div class="detail-item">
+                <span>💎 Valor:</span>
+                <strong>R$ 10,00</strong>
             </div>
-            
-            <div class="qr-wrapper">
-                <img src="qr-10.png" alt="QR Code PIX R$10" id="qrImage">
+            <div class="detail-item">
+                <span>🎁 Bônus:</span>
+                <strong>+5 Rodadas Grátis</strong>
+                <span class="bonus-highlight">🎰 Slot Fortune Tiger</span>
             </div>
-            
-            <div class="payment-details">
-                <div class="detail-item">
-                    <span>Valor:</span>
-                    <strong>R$ 10,00</strong>
-                </div>
-                <div class="detail-item">
-                    <span>Bônus:</span>
-                    <strong>+5 Rodadas Grátis</strong>
-                </div>
-                <div class="detail-item">
-                    <span>Status:</span>
-                    <strong class="status-pending">Aguardando Pagamento</strong>
-                </div>
+            <div class="detail-item">
+                <span>⚡ Status:</span>
+                <strong class="status-pending">Aguardando Pagamento</strong>
             </div>
-            
-            <div class="payment-instructions">
-                <h4><i class="fas fa-info-circle"></i> Instruções:</h4>
-                <ol>
-                    <li>Abra o aplicativo do seu banco</li>
-                    <li>Escolha a opção PIX</li>
-                    <li>Selecione "Ler QR Code"</li>
-                    <li>Escaneie o código acima</li>
-                    <li>Confirme o pagamento de R$10</li>
-                </ol>
+        </div>
+        
+        <div class="payment-instructions">
+            <h4><i class="fas fa-info-circle"></i> Como pagar com PIX:</h4>
+            <ol>
+                <li>Abra o aplicativo do seu banco</li>
+                <li>Escolha a opção <strong>PIX</strong> no menu</li>
+                <li>Selecione <strong>"Ler QR Code"</strong> ou <strong>"Pagar com QR Code"</strong></li>
+                <li>Escaneie o código QR acima com a câmera do celular</li>
+                <li>Confirme o pagamento de <strong>R$10,00</strong></li>
+                <li>O crédito cai na hora na sua conta!</li>
+            </ol>
+            <div class="pix-badge">
+                <i class="fab fa-pix"></i> Pagamento via PIX - Instantâneo e Seguro
             </div>
-            
-            <button class="btn-home" onclick="window.location.href='deposito.html'">
-                <i class="fas fa-arrow-left"></i> Voltar para Depósitos
-            </button>
+        </div>
+        
+        <button class="btn-home" onclick="voltarDepositos()">
+            <i class="fas fa-arrow-left"></i> Voltar para Depósitos
+        </button>
+
+        <div class="timer-section">
+            <div class="timer-label">
+                <i class="fas fa-hourglass-half"></i> Tempo restante para pagamento
+            </div>
+            <div class="timer" id="timer">05:00</div>
         </div>
     </div>
-    
-    <script>
-        // Simular verificação de pagamento
-        let checkInterval;
-        
-        function startPaymentCheck() {
-            checkInterval = setInterval(() => {
-                const statusElement = document.querySelector('.status-pending');
-                if (statusElement && statusElement.textContent === 'Aguardando Pagamento') {
-                    // Aqui você poderia implementar uma verificação real do pagamento
-                    // Por enquanto é apenas simulação
-                }
-            }, 5000);
+</div>
+
+<!-- Success Overlay -->
+<div class="success-overlay" id="successOverlay">
+    <div class="success-content">
+        <i class="fas fa-check-circle"></i>
+        <h3>Pagamento Confirmado!</h3>
+        <p>Seu saldo de R$10 foi creditado com sucesso.</p>
+        <p style="font-size: 14px; margin-top: 10px;">✨ +5 Rodadas Grátis no Fortune Tiger adicionadas!</p>
+        <button class="btn-home" style="margin-top: 20px; background: var(--gradient-primary);" onclick="fecharSucesso()">
+            Começar a Jogar <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+</div>
+
+<script>
+    // Criar partículas
+    function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 4 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particlesContainer.appendChild(particle);
         }
+    }
+
+    // Timer de 5 minutos
+    let timeLeft = 300;
+    const timerElement = document.getElementById('timer');
+    let timerInterval;
+
+    function updateTimer() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            timerElement.textContent = "00:00";
+            timerElement.style.color = "#f44336";
+            showToast('⚠️ Tempo esgotado! Por favor, inicie um novo depósito.', true);
+        } else if (timeLeft <= 60) {
+            timerElement.style.color = "#ff9800";
+        }
+        timeLeft--;
+    }
+
+    function startTimer() {
+        timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    // Show toast notification
+    function showToast(message, isError = false) {
+        const toast = document.createElement('div');
+        toast.textContent = message;
+        toast.style.position = 'fixed';
+        toast.style.bottom = '30px';
+        toast.style.left = '50%';
+        toast.style.transform = 'translateX(-50%)';
+        toast.style.background = isError ? '#f44336' : '#00c853';
+        toast.style.color = isError ? '#fff' : '#000';
+        toast.style.padding = '12px 24px';
+        toast.style.borderRadius = '40px';
+        toast.style.fontWeight = '600';
+        toast.style.zIndex = '9999';
+        toast.style.animation = 'fadeInUp 0.3s ease';
+        toast.style.fontFamily = "'Inter', sans-serif";
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+
+    // Simular verificação de pagamento
+    let checkInterval;
+    let paymentConfirmed = false;
+
+    function startPaymentCheck() {
+        checkInterval = setInterval(() => {
+            if (!paymentConfirmed) {
+                console.log('🔍 Verificando pagamento...');
+                // Em produção, aqui seria uma chamada API real
+                // Por enquanto é apenas simulação visual
+            }
+        }, 5000);
+    }
+
+    // Função para simular pagamento bem-sucedido
+    function simulatePaymentSuccess() {
+        if (!paymentConfirmed) {
+            paymentConfirmed = true;
+            clearInterval(checkInterval);
+            clearInterval(timerInterval);
+            
+            const overlay = document.getElementById('successOverlay');
+            overlay.classList.add('show');
+            
+            const statusElement = document.querySelector('.status-pending');
+            if (statusElement) {
+                statusElement.textContent = '✅ Pagamento Confirmado!';
+                statusElement.style.background = 'none';
+                statusElement.style.color = '#00c853';
+                statusElement.style.animation = 'none';
+            }
+            
+            const currentBalance = localStorage.getItem('userBalance') || 0;
+            const newBalance = parseInt(currentBalance) + 10;
+            localStorage.setItem('userBalance', newBalance);
+            localStorage.setItem('bonusRodadas', '5');
+            localStorage.setItem('bonusRodadasGame', 'Fortune Tiger');
+            
+            showToast('✅ Pagamento confirmado! R$10 creditados + 5 rodadas grátis no Fortune Tiger!');
+        }
+    }
+
+    function voltarDepositos() {
+        if (timerInterval) clearInterval(timerInterval);
+        if (checkInterval) clearInterval(checkInterval);
+        window.location.href = 'deposito.html';
+    }
+
+    function fecharSucesso() {
+        window.location.href = 'index.html';
+    }
+
+    // Efeito de clique no QR code
+    const qrImage = document.getElementById('qrImage');
+    if (qrImage) {
+        qrImage.addEventListener('click', () => {
+            qrImage.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                qrImage.style.transform = '';
+            }, 300);
+            showToast('📱 Escaneie o QR Code com a câmera do seu banco');
+        });
+        
+        // Efeito de hover
+        qrImage.addEventListener('mouseenter', () => {
+            qrImage.style.transition = 'transform 0.3s ease';
+        });
+    }
+
+    // Verificar se está logado
+    document.addEventListener('DOMContentLoaded', () => {
+        createParticles();
+        startTimer();
         startPaymentCheck();
         
-        // Cleanup on page unload
+        const isLogged = localStorage.getItem('isLogged');
+        const userName = localStorage.getItem('userName');
+        
+        if (!isLogged || isLogged !== 'true') {
+            showToast('⚠️ Faça login para confirmar seu depósito!', true);
+            setTimeout(() => {
+                if (confirm('Você precisa estar logado para depositar. Deseja fazer login agora?')) {
+                    window.location.href = 'login.html';
+                }
+            }, 1000);
+        } else if (userName) {
+            setTimeout(() => {
+                showToast(`👋 Olá ${userName}! Seu depósito está aguardando pagamento.`);
+            }, 500);
+        }
+        
         window.addEventListener('beforeunload', () => {
             if (checkInterval) clearInterval(checkInterval);
+            if (timerInterval) clearInterval(timerInterval);
         });
-    </script>
+    });
+
+    // Expor função para simular pagamento (apenas para demonstração)
+    window.simulatePaymentSuccess = simulatePaymentSuccess;
+</script>
+
 </body>
 </html>
