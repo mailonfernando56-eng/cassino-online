@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>LuxPlay - Cassino Mobile</title>
+    <title>LuxBet - O Melhor Cassino Online</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -11,54 +11,74 @@
 <body>
 
 <div class="top-nav">
-    <div class="logo">LUXPLAY</div>
+    <div class="logo">🎰 LUXBET</div>
     <div class="nav-menu">
-        <a href="#">Início</a>
-        <a href="#">Slots</a>
-        <a href="#">Live</a>
-        <a href="#">Promoções</a>
+        <a href="index.html">Início</a>
+        <a href="#jogos">Jogos</a>
+        <a href="#promocoes">Promoções</a>
     </div>
     <div class="auth-btns">
-        <button class="btn-login" id="loginBtn">Entrar</button>
-        <button class="btn-signup" id="signupBtn">Cadastro</button>
+        <button class="btn-login" id="loginBtn" onclick="window.location.href='login.html'">Entrar</button>
+        <button class="btn-signup" id="signupBtn" onclick="window.location.href='cadastro.html'">Cadastro</button>
     </div>
 </div>
 
 <div class="main-layout">
     <div class="sidebar">
-        <div class="sidebar-item"><i class="fas fa-home"></i></div>
-        <div class="sidebar-item"><i class="fas fa-dice-d6"></i></div>
-        <div class="sidebar-item"><i class="fas fa-crown"></i></div>
-        <div class="sidebar-item"><i class="fas fa-user"></i></div>
-        <div class="sidebar-item"><i class="fas fa-gift"></i></div>
+        <div class="sidebar-item"><i class="fas fa-home"></i><span>Início</span></div>
+        <div class="sidebar-item"><i class="fas fa-dragon"></i><span>Tigrinho</span></div>
+        <div class="sidebar-item"><i class="fas fa-chart-line"></i><span>Roleta</span></div>
+        <div class="sidebar-item"><i class="fas fa-bull"></i><span>Touro</span></div>
+        <div class="sidebar-item"><i class="fas fa-gift"></i><span>Bônus</span></div>
     </div>
 
     <div class="main-content">
-        <div class="search-bar-mobile">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Buscar jogos, slots, jackpot...">
-        </div>
-
-        <div class="feature-banner">
-            <div class="feature-text">
-                <h4>🔥 Bônus de Boas-Vindas</h4>
-                <p>100% até R$500 + rodadas grátis</p>
+        <!-- Banner Principal -->
+        <div class="hero-banner">
+            <div class="hero-content">
+                <h1>Bem-vindo ao <span class="highlight">LuxBet</span></h1>
+                <p>O Melhor Cassino Online do Brasil</p>
+                <div class="hero-buttons">
+                    <button class="btn-deposit" onclick="window.location.href='deposito.html'">
+                        <i class="fas fa-coins"></i> DEPOSITAR AGORA
+                    </button>
+                    <button class="btn-cadastro" onclick="window.location.href='cadastro.html'">
+                        <i class="fas fa-user-plus"></i> CADASTRAR
+                    </button>
+                </div>
             </div>
-            <div class="feature-btn" id="bonusBtn">Resgatar</div>
         </div>
 
-        <div class="section-header">
+        <!-- Jogos Populares -->
+        <div class="section-header" id="jogos">
             <h2><i class="fas fa-fire"></i> Jogos Populares</h2>
             <div class="view-all">Ver todos <i class="fas fa-chevron-right"></i></div>
         </div>
 
-        <div class="games-grid" id="gamesGrid"></div>
-
-        <div class="section-header" style="margin-top: 20px;">
-            <h2><i class="fas fa-star"></i> Novidades da Semana</h2>
-            <div class="view-all">Novos</div>
+        <div class="games-grid" id="gamesGrid">
+            <!-- Cards de jogos serão inseridos via JS -->
         </div>
-        <div class="games-grid" id="newGamesGrid"></div>
+
+        <!-- Promoções -->
+        <div class="section-header" id="promocoes" style="margin-top: 30px;">
+            <h2><i class="fas fa-gift"></i> Bônus Especiais</h2>
+            <div class="view-all">Ver todas</div>
+        </div>
+
+        <div class="promo-grid">
+            <div class="promo-card">
+                <div class="promo-badge">100%</div>
+                <h3>Bônus de Boas-Vindas</h3>
+                <p>Até R$500 + 50 rodadas grátis</p>
+                <button class="promo-btn" onclick="window.location.href='cadastro.html'">RESGATAR</button>
+            </div>
+            <div class="promo-card">
+                <div class="promo-badge">20%</div>
+                <h3>Cashback Semanal</h3>
+                <p>Recupere suas perdas todas as semanas</p>
+                <button class="promo-btn" onclick="window.location.href='deposito.html'">PARTICIPAR</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -67,15 +87,15 @@
         <i class="fas fa-home"></i>
         <span>Início</span>
     </div>
-    <div class="bottom-item" data-tab="slots">
+    <div class="bottom-item" data-tab="jogos">
         <i class="fas fa-dice-d6"></i>
-        <span>Slots</span>
+        <span>Jogos</span>
     </div>
-    <div class="bottom-item" data-tab="live">
-        <i class="fas fa-crown"></i>
-        <span>Live</span>
+    <div class="bottom-item" data-tab="deposito" onclick="window.location.href='deposito.html'">
+        <i class="fas fa-coins"></i>
+        <span>Depósito</span>
     </div>
-    <div class="bottom-item" data-tab="profile">
+    <div class="bottom-item" data-tab="perfil" onclick="window.location.href='login.html'">
         <i class="fas fa-user"></i>
         <span>Perfil</span>
     </div>
