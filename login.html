@@ -7,127 +7,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>
-        .auth-container {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 20px 100px;
-            background: linear-gradient(135deg, #0b0e11 0%, #1a1f24 100%);
-        }
-        .auth-card {
-            background: var(--bg-card);
-            border-radius: 24px;
-            padding: 40px 30px;
-            max-width: 450px;
-            width: 100%;
-            border: 1px solid var(--border);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-        .auth-card h2 {
-            font-size: 28px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .auth-card h2 i {
-            color: var(--primary);
-            margin-right: 10px;
-        }
-        .auth-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-        .input-group {
-            margin-bottom: 20px;
-        }
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .input-group input {
-            width: 100%;
-            padding: 14px 16px;
-            background: var(--bg-dark);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            color: white;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-        .input-group input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(0,200,83,0.2);
-        }
-        .btn-submit {
-            width: 100%;
-            background: var(--primary);
-            color: #000;
-            padding: 14px;
-            border: none;
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: 0.3s;
-        }
-        .auth-footer {
-            text-align: center;
-            margin-top: 25px;
-            color: var(--text-muted);
-        }
-        .auth-footer a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .back-home {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: var(--bg-card);
-            padding: 10px 20px;
-            border-radius: 40px;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            z-index: 100;
-            border: 1px solid var(--border);
-        }
-    </style>
 </head>
 <body>
-    <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Voltar</a>
-    
     <div class="auth-container">
-        <div class="auth-card">
-            <h2><i class="fas fa-sign-in-alt"></i> Entrar</h2>
-            <p class="auth-subtitle">Bem-vindo de volta!</p>
+        <div class="auth-card animate-slide-up">
+            <div class="auth-header">
+                <div class="logo">LUX<span>BET</span></div>
+                <h2><i class="fas fa-sign-in-alt"></i> Bem-vindo de Volta</h2>
+                <p>Entre e continue ganhando</p>
+            </div>
             
             <form id="loginForm">
                 <div class="input-group">
-                    <label>E-mail</label>
+                    <label><i class="fas fa-envelope"></i> E-mail</label>
                     <input type="email" id="email" required placeholder="seu@email.com">
                 </div>
                 <div class="input-group">
-                    <label>Senha</label>
-                    <input type="password" id="senha" required placeholder="Digite sua senha">
+                    <label><i class="fas fa-lock"></i> Senha</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="senha" required placeholder="Digite sua senha">
+                        <i class="fas fa-eye-slash toggle-password"></i>
+                    </div>
+                </div>
+                <div class="input-group forgot-password">
+                    <a href="#">Esqueceu a senha?</a>
                 </div>
                 <button type="submit" class="btn-submit">ENTRAR</button>
             </form>
             
             <div class="auth-footer">
-                Não tem conta? <a href="cadastro.html">Cadastre-se</a>
+                Não tem conta? <a href="cadastro.html">Cadastre-se grátis</a>
             </div>
         </div>
     </div>
     
     <script>
+        document.querySelectorAll('.toggle-password').forEach(icon => {
+            icon.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.classList.remove('fa-eye-slash');
+                    this.classList.add('fa-eye');
+                } else {
+                    input.type = 'password';
+                    this.classList.remove('fa-eye');
+                    this.classList.add('fa-eye-slash');
+                }
+            });
+        });
+
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('email').value;
@@ -139,15 +68,35 @@
                 const user = JSON.parse(userData);
                 if (user.email === email && user.senha === senha) {
                     localStorage.setItem('isLogged', 'true');
-                    alert('✅ Login realizado com sucesso!');
-                    window.location.href = 'index.html';
+                    showSuccess('✅ Login realizado com sucesso! Redirecionando...');
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
                 } else {
-                    alert('❌ E-mail ou senha incorretos!');
+                    showError('❌ E-mail ou senha incorretos!');
                 }
             } else {
-                alert('❌ Nenhuma conta encontrada! Faça seu cadastro primeiro.');
+                showError('❌ Nenhuma conta encontrada! Faça seu cadastro primeiro.');
             }
         });
+        
+        function showError(msg) {
+            const toast = document.createElement('div');
+            toast.className = 'toast-msg';
+            toast.textContent = msg;
+            toast.style.background = '#dc2626';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+        
+        function showSuccess(msg) {
+            const toast = document.createElement('div');
+            toast.className = 'toast-msg';
+            toast.textContent = msg;
+            toast.style.background = '#00c853';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
     </script>
 </body>
 </html>
