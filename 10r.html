@@ -3,50 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Depósito R$10 - LuxBet</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0b0e11 0%, #1a1f24 100%);
-        }
-        .payment-box {
-            background: var(--bg-card);
-            padding: 40px;
-            border-radius: 24px;
-            text-align: center;
-            max-width: 450px;
-            width: 90%;
-        }
-        img {
-            width: 250px;
-            height: 250px;
-            margin: 20px 0;
-        }
-        .btn-home {
-            background: var(--primary);
-            color: #000;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 40px;
-            font-weight: 800;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        h2 {
-            color: var(--primary);
-        }
-    </style>
+    <title>Depósito R$ 10,00</title>
 </head>
 <body>
-    <div class="payment-box">
-        <h2>💎 Depósito R$10</h2>
-        <img src="qr-10.png" alt="QR Code R$10">
-        <p>Escaneie o QR Code para pagar via PIX</p>
-        <button class="btn-home" onclick="window.location.href='index.html'">Voltar ao Início</button>
+    <div class="payment-container">
+        <h2>Pagamento via PIX</h2>
+        <p style="font-size: 1.2rem;">Valor a depositar: <span style="color: #f0b90b; font-weight: bold;">R$ 10,00</span></p>
+        
+        <!-- Imagem do seu QR Code de 10 reais -->
+        <img src="qr-10.png" alt="QR Code 10 Reais" class="qr-img">
+        
+        <p>Aponte a câmera do seu celular para o código acima.</p>
+        <p style="font-size: 13px; color: #aaa; margin-top: 15px;">
+            O crédito será liberado automaticamente após a confirmação bancária.
+        </p>
+        
+        <br>
+        <a href="deposito.html" class="btn btn-login" style="display: inline-block; text-decoration: none;">Voltar</a>
     </div>
 </body>
 </html>
