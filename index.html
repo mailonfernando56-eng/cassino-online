@@ -2,71 +2,204 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="description" content="LuxBet - O melhor cassino online do Brasil. Jogue Fortune Tiger, Roleta, Aviator e muito mais. Bônus exclusivos de boas-vindas!">
+    <meta name="keywords" content="cassino, tigrinho, fortune tiger, roleta, aviator, slots">
+    <title>LuxBet - O Melhor Cassino Online do Brasil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <title>WinPRO - O melhor cassino</title>
 </head>
 <body>
 
-    <header>
-        <div class="logo">GOLDEN-BET</div>
-        <a href="deposito.html" class="btn-header-deposito">DEPOSITAR</a>
-    </header>
+<!-- Loading Screen -->
+<div class="loader-wrapper" id="loader">
+    <div class="loader"></div>
+</div>
 
-    <div class="banner">
-        <h1>BÔNUS DE 100%</h1>
-        <p>Deposite agora e dobre seu saldo!</p>
+<!-- Navbar Desktop -->
+<div class="top-nav">
+    <div class="logo">
+        <i class="fas fa-crown"></i> LUX<span>BET</span>
     </div>
+    <div class="nav-menu">
+        <a href="index.html" class="active">Início</a>
+        <a href="#jogos">Jogos</a>
+        <a href="#promocoes">Promoções</a>
+        <a href="#suporte">Suporte</a>
+    </div>
+    <div class="auth-btns">
+        <button class="btn-login" id="loginBtn">Entrar</button>
+        <button class="btn-signup" id="signupBtn">Cadastro</button>
+        <button class="btn-deposit-nav" id="depositNavBtn"><i class="fas fa-coins"></i> Depósito</button>
+    </div>
+    <div class="mobile-menu-icon" id="mobileMenuIcon">
+        <i class="fas fa-bars"></i>
+    </div>
+</div>
 
-    <div class="game-section">
-        <h2>🔥 Jogos em Alta</h2>
-        <div class="game-grid">
-            
-            <!-- Jogo 1: Tigrinho -->
-            <a href="deposito.html" class="game-card">
-                <div class="badge-new">HOT</div>
-                <img src="imagens jogos cassino/tigrinho.jpg" alt="Fortune Tiger">
-            </a>
+<!-- Mobile Side Menu -->
+<div class="mobile-sidebar" id="mobileSidebar">
+    <div class="mobile-sidebar-header">
+        <div class="logo">LUX<span>BET</span></div>
+        <button class="close-sidebar" id="closeSidebar"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="mobile-sidebar-menu">
+        <a href="index.html"><i class="fas fa-home"></i> Início</a>
+        <a href="#jogos"><i class="fas fa-dice-d6"></i> Jogos</a>
+        <a href="#promocoes"><i class="fas fa-gift"></i> Promoções</a>
+        <a href="deposito.html"><i class="fas fa-coins"></i> Depósito</a>
+        <a href="login.html"><i class="fas fa-user"></i> Minha Conta</a>
+    </div>
+    <div class="mobile-sidebar-footer">
+        <button class="btn-login-mobile" onclick="window.location.href='login.html'">Entrar</button>
+        <button class="btn-signup-mobile" onclick="window.location.href='cadastro.html'">Cadastrar</button>
+    </div>
+</div>
 
-            <!-- Jogo 2: Touro -->
-            <a href="deposito.html" class="game-card">
-                <img src="imagens jogos cassino/touro.jpg" alt="Fortune Ox">
-            </a>
-
-            <!-- Jogo 3: Coelho -->
-            <a href="deposito.html" class="game-card">
-                <img src="imagens jogos cassino/coelho.jpg" alt="Fortune Rabbit">
-            </a>
-
-            <!-- Jogo 4: Aviator -->
-            <a href="deposito.html" class="game-card">
-                <img src="https://static.smartsoftgaming.com/images/games/icons/jetx.jpg" alt="JetX">
-            </a>
-
-            <!-- Jogo 5: Mines -->
-            <a href="deposito.html" class="game-card">
-                <img src="https://play-lh.googleusercontent.com/6UqS2UuU_v1_vV1X..." alt="Mines">
-            </a>
-
-            <!-- Jogo 6: Roleta -->
-            <a href="deposito.html" class="game-card">
-                <img src="imagens jogos cassino/roleta.jpg" alt="Roulette">
-            </a>
-
-            <!-- Repita para mais jogos -->
-            <a href="deposito.html" class="game-card"><img src="imagens jogos cassino/dragon.jpg"></a>
-            <a href="deposito.html" class="game-card"><img src="imagens jogos cassino/gates.jpg"></a>
-            <a href="deposito.html" class="game-card"><img src="imagens jogos cassino/sugar.jpg"></a>
+<div class="main-layout">
+    <!-- Sidebar Desktop -->
+    <div class="sidebar">
+        <div class="sidebar-item" data-game="tigrinho">
+            <i class="fas fa-dragon"></i>
+            <span>Tigrinho</span>
+        </div>
+        <div class="sidebar-item" data-game="roleta">
+            <i class="fas fa-chart-line"></i>
+            <span>Roleta</span>
+        </div>
+        <div class="sidebar-item" data-game="touro">
+            <i class="fas fa-bull"></i>
+            <span>Touro</span>
+        </div>
+        <div class="sidebar-item" data-game="aviator">
+            <i class="fas fa-plane"></i>
+            <span>Aviator</span>
+        </div>
+        <div class="sidebar-item" data-game="mines">
+            <i class="fas fa-bomb"></i>
+            <span>Mines</span>
+        </div>
+        <div class="sidebar-item" data-game="blackjack">
+            <i class="fas fa-club"></i>
+            <span>Blackjack</span>
         </div>
     </div>
 
-    <!-- Navegação Estilo App -->
-    <nav class="bottom-nav">
-        <a href="index.html" class="nav-item active">🏠<br>Início</a>
-        <a href="deposito.html" class="nav-item">💰<br>Depósito</a>
-        <a href="cadastro.html" class="nav-item">👤<br>Cadastro</a>
-        <a href="suporte.html" class="nav-item">🎧<br>Suporte</a>
-    </nav>
+    <div class="main-content">
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+            <div class="hero-content">
+                <div class="hero-badge">🔥 O MELHOR DO BRASIL 🔥</div>
+                <h1>Bem-vindo ao <span class="highlight">LuxBet</span></h1>
+                <p>A experiência de cassino mais premium do país</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-value">+50.000</span>
+                        <span class="stat-label">Jogadores Ativos</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">R$2M+</span>
+                        <span class="stat-label">Prêmios Pagos</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">24/7</span>
+                        <span class="stat-label">Suporte</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn-deposit" onclick="window.location.href='deposito.html'">
+                        <i class="fas fa-coins"></i> DEPOSITAR AGORA
+                    </button>
+                    <button class="btn-cadastro" onclick="window.location.href='cadastro.html'">
+                        <i class="fas fa-user-plus"></i> BÔNUS DE BOAS-VINDAS
+                    </button>
+                </div>
+            </div>
+        </div>
 
+        <!-- Jogos Populares -->
+        <div class="section-header" id="jogos">
+            <h2><i class="fas fa-fire" style="color: #ff6b35;"></i> Jogos Populares</h2>
+            <div class="view-all">Ver todos <i class="fas fa-chevron-right"></i></div>
+        </div>
+
+        <div class="games-grid" id="gamesGrid"></div>
+
+        <!-- Jogos em Destaque -->
+        <div class="section-header" style="margin-top: 40px;">
+            <h2><i class="fas fa-star" style="color: #ffd700;"></i> Jogos em Destaque</h2>
+            <div class="view-all">Explorar</div>
+        </div>
+
+        <div class="featured-games-grid" id="featuredGamesGrid"></div>
+
+        <!-- Promoções -->
+        <div class="section-header" id="promocoes" style="margin-top: 40px;">
+            <h2><i class="fas fa-gift" style="color: #00c853;"></i> Bônus e Promoções</h2>
+            <div class="view-all">Ver todas</div>
+        </div>
+
+        <div class="promo-grid">
+            <div class="promo-card">
+                <div class="promo-badge">100%</div>
+                <h3>Bônus de Boas-Vindas</h3>
+                <p>Até R$500 + 50 rodadas grátis no Fortune Tiger</p>
+                <div class="promo-code">Código: LUX100</div>
+                <button class="promo-btn" onclick="window.location.href='cadastro.html'">RESGATAR AGORA</button>
+            </div>
+            <div class="promo-card">
+                <div class="promo-badge">20%</div>
+                <h3>Cashback Semanal</h3>
+                <p>Recupere 20% das suas perdas todas as segundas</p>
+                <div class="promo-code">Automático</div>
+                <button class="promo-btn" onclick="window.location.href='deposito.html'">PARTICIPAR</button>
+            </div>
+            <div class="promo-card">
+                <div class="promo-badge">R$50</div>
+                <h3>Indique um Amigo</h3>
+                <p>Ganhe R$50 para cada amigo que depositar</p>
+                <div class="promo-code">Indicação</div>
+                <button class="promo-btn" onclick="showToast('Compartilhe seu link de indicação!')">CONVIDAR</button>
+            </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="newsletter-section">
+            <div class="newsletter-content">
+                <i class="fas fa-envelope"></i>
+                <h3>Receba Ofertas Exclusivas</h3>
+                <p>Cadastre-se e receba bônus especiais no seu e-mail</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Seu melhor e-mail" id="newsletterEmail">
+                    <button onclick="subscribeNewsletter()">INSCREVER</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bottom-nav">
+    <div class="bottom-item active" data-tab="home">
+        <i class="fas fa-home"></i>
+        <span>Início</span>
+    </div>
+    <div class="bottom-item" data-tab="jogos">
+        <i class="fas fa-dice-d6"></i>
+        <span>Jogos</span>
+    </div>
+    <div class="bottom-item" data-tab="deposito" onclick="window.location.href='deposito.html'">
+        <i class="fas fa-coins"></i>
+        <span>Depósito</span>
+    </div>
+    <div class="bottom-item" data-tab="perfil" onclick="window.location.href='login.html'">
+        <i class="fas fa-user"></i>
+        <span>Perfil</span>
+    </div>
+</div>
+
+<div id="toastMsg" class="toast-msg"></div>
+
+<script src="script.js"></script>
 </body>
 </html>
