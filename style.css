@@ -43,7 +43,7 @@ body {
     width: 100%;
 }
 
-/* ==================== HEADER MOBILE FIRST ==================== */
+/* ==================== HEADER MOBILE ==================== */
 .header {
     position: fixed;
     top: 0;
@@ -56,6 +56,13 @@ body {
 }
 
 .header .container {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+/* Top row com logo e ações */
+.header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -89,6 +96,46 @@ body {
     color: var(--secondary);
 }
 
+/* Menu de navegação mobile (visível) */
+.nav-mobile {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(18, 22, 28, 0.95);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 12px;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-mobile::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-link-mobile {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 12px;
+    transition: color 0.3s;
+    white-space: nowrap;
+    padding: 6px 10px;
+    border-radius: 20px;
+}
+
+.nav-link-mobile.active {
+    color: var(--primary);
+    background: rgba(0, 200, 83, 0.1);
+}
+
+.nav-link-mobile:hover {
+    color: var(--primary);
+}
+
+/* Desktop nav (escondida no mobile) */
 .nav.desktop-nav {
     display: none;
 }
@@ -106,7 +153,7 @@ body {
     padding: 6px 12px;
     border-radius: 30px;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 11px;
     cursor: pointer;
     transition: all 0.3s;
     white-space: nowrap;
@@ -119,7 +166,7 @@ body {
     padding: 6px 12px;
     border-radius: 30px;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 11px;
     cursor: pointer;
     transition: transform 0.3s;
     white-space: nowrap;
@@ -132,7 +179,7 @@ body {
     padding: 6px 12px;
     border-radius: 30px;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 11px;
     cursor: pointer;
     transition: all 0.3s;
     white-space: nowrap;
@@ -146,7 +193,7 @@ body {
 }
 
 .mobile-menu-btn {
-    display: block;
+    display: none;
     background: none;
     border: none;
     color: var(--text-primary);
@@ -155,8 +202,8 @@ body {
     padding: 8px;
 }
 
-/* Mobile Menu */
-.mobile-menu {
+/* Mobile Menu Lateral */
+.mobile-sidebar {
     position: fixed;
     top: 0;
     right: -100%;
@@ -171,11 +218,11 @@ body {
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
 }
 
-.mobile-menu.open {
+.mobile-sidebar.open {
     right: 0;
 }
 
-.mobile-menu-header {
+.mobile-sidebar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -183,7 +230,7 @@ body {
     border-bottom: 1px solid var(--border);
 }
 
-.close-menu {
+.close-sidebar {
     background: none;
     border: none;
     color: var(--text-primary);
@@ -191,14 +238,14 @@ body {
     cursor: pointer;
 }
 
-.mobile-nav {
+.mobile-sidebar-nav {
     display: flex;
     flex-direction: column;
     flex: 1;
     padding: 20px;
 }
 
-.mobile-nav a {
+.mobile-sidebar-nav a {
     color: var(--text-primary);
     text-decoration: none;
     padding: 12px 0;
@@ -210,13 +257,13 @@ body {
     gap: 12px;
 }
 
-.mobile-nav a i {
+.mobile-sidebar-nav a i {
     width: 24px;
     color: var(--primary);
     font-size: 16px;
 }
 
-.mobile-menu-footer {
+.mobile-sidebar-footer {
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -224,17 +271,13 @@ body {
     border-top: 1px solid var(--border);
 }
 
-.w-100 {
-    width: 100%;
-}
-
-/* ==================== HERO SECTION MOBILE ==================== */
+/* ==================== HERO SECTION ==================== */
 .hero {
     position: relative;
     min-height: auto;
     display: flex;
     align-items: center;
-    padding: 80px 0 40px;
+    padding: 130px 0 40px;
     overflow: hidden;
 }
 
@@ -326,7 +369,7 @@ body {
 .stat-value {
     font-size: 20px;
     font-weight: 800;
-    color: var(--primary-gold, var(--secondary));
+    color: var(--secondary);
 }
 
 .stat-label {
@@ -377,7 +420,7 @@ body {
     gap: 6px;
 }
 
-/* ==================== GAMES GRID MOBILE ==================== */
+/* ==================== GAMES GRID ==================== */
 .games-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -423,10 +466,6 @@ body {
     display: flex;
     align-items: center;
     gap: 3px;
-}
-
-.featured-badge i {
-    font-size: 8px;
 }
 
 .game-hover {
@@ -490,31 +529,12 @@ body {
     font-weight: 600;
 }
 
-.category-badge i {
-    font-size: 8px;
-}
-
 .category-badge.slot {
     background: rgba(255, 107, 53, 0.15);
     color: #ff6b35;
 }
 
-.category-badge.roleta {
-    background: rgba(0, 200, 83, 0.15);
-    color: #00c853;
-}
-
-.category-badge.crash {
-    background: rgba(33, 150, 243, 0.15);
-    color: #2196f3;
-}
-
-.category-badge.mesa {
-    background: rgba(156, 39, 176, 0.15);
-    color: #9c27b0;
-}
-
-/* ==================== PROMO GRID MOBILE ==================== */
+/* ==================== PROMO GRID ==================== */
 .promo-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -571,7 +591,7 @@ body {
     display: inline-block;
 }
 
-/* ==================== NEWSLETTER MOBILE ==================== */
+/* ==================== NEWSLETTER ==================== */
 .newsletter {
     padding: 40px 0;
 }
@@ -610,7 +630,7 @@ body {
 
 .newsletter-form input {
     padding: 12px 16px;
-    background: var(--bg-primary);
+    background: var(--bg-dark);
     border: 1px solid var(--border);
     border-radius: 40px;
     color: var(--text-primary);
@@ -618,17 +638,12 @@ body {
     width: 100%;
 }
 
-.newsletter-form input:focus {
-    outline: none;
-    border-color: var(--primary);
-}
-
 .newsletter-form button {
     padding: 12px 20px;
     font-size: 14px;
 }
 
-/* ==================== FOOTER MOBILE ==================== */
+/* ==================== FOOTER ==================== */
 .footer {
     background: var(--bg-secondary);
     border-top: 1px solid var(--border);
@@ -673,11 +688,6 @@ body {
     transition: all 0.3s;
 }
 
-.social-links a:hover {
-    background: var(--primary);
-    color: #000;
-}
-
 .footer-links h4 {
     font-size: 14px;
     margin-bottom: 16px;
@@ -691,10 +701,6 @@ body {
     margin-bottom: 10px;
     font-size: 12px;
     transition: color 0.3s;
-}
-
-.footer-links a:hover {
-    color: var(--primary);
 }
 
 .footer-bottom {
@@ -721,9 +727,7 @@ body {
     border-left: 3px solid var(--primary);
     transition: transform 0.3s;
     opacity: 0;
-    white-space: nowrap;
     max-width: 90%;
-    white-space: normal;
     text-align: center;
 }
 
@@ -753,7 +757,7 @@ body {
     
     .btn-large {
         width: auto;
-        min-width: 180px;
+        min-width: 200px;
     }
     
     .games-grid {
@@ -782,7 +786,7 @@ body {
 
 /* ==================== DESKTOP (768px+) ==================== */
 @media (min-width: 768px) {
-    .header .container {
+    .header-top {
         height: 70px;
         padding: 0 32px;
     }
@@ -791,6 +795,12 @@ body {
         font-size: 26px;
     }
     
+    /* Esconde menu mobile no desktop */
+    .nav-mobile {
+        display: none;
+    }
+    
+    /* Mostra menu desktop */
     .nav.desktop-nav {
         display: flex;
         gap: 24px;
@@ -814,8 +824,8 @@ body {
         font-size: 13px;
     }
     
-    .mobile-menu-btn {
-        display: none;
+    .hero {
+        padding: 100px 0 60px;
     }
     
     .hero-title {
@@ -885,5 +895,10 @@ body {
     
     .btn-primary:hover {
         transform: translateY(-2px);
+    }
+    
+    .social-links a:hover {
+        background: var(--primary);
+        color: #000;
     }
 }
