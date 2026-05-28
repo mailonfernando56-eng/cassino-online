@@ -23,7 +23,7 @@
                     </div>
                     <nav class="nav desktop-nav">
                         <a href="index.html" class="nav-link active">Início</a>
-                        <a href="#jogos" class="nav-link">Jogos</a>
+                        <a href="jogos.html" class="nav-link">Jogos</a>
                         <a href="promo.html" class="nav-link">Promoções</a>
                         <a href="suporte.html" class="nav-link">Suporte</a>
                     </nav>
@@ -41,7 +41,7 @@
                 <!-- Menu Mobile Visível -->
                 <nav class="nav-mobile">
                     <a href="index.html" class="nav-link-mobile active">Início</a>
-                    <a href="#jogos" class="nav-link-mobile">Jogos</a>
+                    <a href="jogos.html" class="nav-link-mobile">Jogos</a>
                     <a href="promo.html" class="nav-link-mobile">Promoções</a>
                     <a href="suporte.html" class="nav-link-mobile">Suporte</a>
                 </nav>
@@ -56,7 +56,7 @@
             </div>
             <nav class="mobile-sidebar-nav">
                 <a href="index.html"><i class="fas fa-home"></i> Início</a>
-                <a href="#jogos"><i class="fas fa-dice-d6"></i> Jogos</a>
+                <a href="jogos.html"><i class="fas fa-dice-d6"></i> Jogos</a>
                 <a href="promo.html"><i class="fas fa-gift"></i> Promoções</a>
                 <a href="suporte.html"><i class="fas fa-headset"></i> Suporte</a>
                 <a href="deposito.html"><i class="fas fa-coins"></i> Depósito</a>
@@ -117,7 +117,7 @@
                         <h2><i class="fas fa-fire"></i> Jogos em Destaque</h2>
                         <p>Os jogos mais populares do momento</p>
                     </div>
-                    <a href="#" class="view-all">Ver todos <i class="fas fa-arrow-right"></i></a>
+                    <a href="jogos.html" class="view-all">Ver todos <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="games-grid" id="featuredGames"></div>
             </div>
@@ -208,10 +208,10 @@
                     </div>
                     <div class="footer-links">
                         <h4>Jogos</h4>
-                        <a href="#" onclick="playGame('Fortune Tiger')">Fortune Tiger</a>
-                        <a href="#" onclick="playGame('Fortune Ox')">Fortune Ox</a>
-                        <a href="#" onclick="playGame('Aviator')">Aviator</a>
-                        <a href="#" onclick="playGame('Roleta')">Roleta</a>
+                        <a href="jogos.html">Todos os Jogos</a>
+                        <a href="jogos.html">Slots</a>
+                        <a href="jogos.html">Crash Games</a>
+                        <a href="jogos.html">Roleta</a>
                     </div>
                 </div>
                 <div class="footer-bottom">
@@ -268,6 +268,7 @@
             const isLogged = localStorage.getItem('isLogged');
             if (isLogged === 'true') {
                 showToast(`🎮 Iniciando ${gameName}...`);
+                console.log(`Abrindo jogo: ${gameName}`);
             } else {
                 showToast('⚠️ Faça login para jogar!');
                 setTimeout(() => {
@@ -292,6 +293,12 @@
             if (email && email.includes('@') && email.includes('.')) {
                 showToast('✅ Inscrito com sucesso! Você receberá novidades.');
                 document.getElementById('newsletterEmail').value = '';
+                // Salvar email no localStorage
+                const emails = JSON.parse(localStorage.getItem('newsletterEmails') || '[]');
+                if (!emails.includes(email)) {
+                    emails.push(email);
+                    localStorage.setItem('newsletterEmails', JSON.stringify(emails));
+                }
             } else {
                 showToast('❌ Digite um e-mail válido!');
             }
@@ -314,6 +321,7 @@
             });
         }
 
+        // Close menu on outside click
         document.addEventListener('click', (e) => {
             if (mobileSidebar && mobileSidebar.classList.contains('open')) {
                 if (!mobileSidebar.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
@@ -343,7 +351,7 @@
         // Load games
         renderGames();
 
-        // Check login status
+        // Check login status on page load
         window.addEventListener('load', () => {
             const isLogged = localStorage.getItem('isLogged');
             const userName = localStorage.getItem('userName');
