@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="description" content="Promoções LuxBet - Os melhores bônus e ofertas exclusivas para você">
+    <title>Promoções - LuxBet | Bônus Exclusivos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0c10;
+            --bg-secondary: #12161c;
+            --bg-card: #1a1e26;
+            --bg-card-hover: #222832;
+            --primary: #00c853;
+            --primary-dark: #009624;
+            --primary-glow: rgba(0, 200, 83, 0.3);
+            --secondary: #ffd700;
+            --accent: #ff6b35;
+            --text-primary: #ffffff;
+            --text-secondary: #8a93a3;
+            --text-muted: #5a6373;
+            --border: #2a2f3a;
+            --gradient: linear-gradient(135deg, #00c853 0%, #ffd700 100%);
+            --gradient-primary: linear-gradient(135deg, #00c853 0%, #69f0ae 100%);
+            --gradient-accent: linear-gradient(135deg, #ff6b35 0%, #ffd700 100%);
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 40px rgba(0, 200, 83, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 200, 83, 0.08), transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            bottom: -50%;
+            right: -50%;
+            background: radial-gradient(circle at 70% 80%, rgba(255, 215, 0, 0.05), transparent 70%);
+            animation: rotateReverse 25s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateReverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        /* Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(0, 200, 83, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 12, 16, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 16px;
+            width: 100%;
+        }
+
+        .header .container {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            padding: 0 16px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .logo i {
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .logo span {
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: var(--secondary);
+        }
+
+        .nav-mobile {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(18, 22, 28, 0.95);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 12px;
+            gap: 8px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .nav-mobile::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-link-mobile {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 12px;
+            transition: color 0.3s;
+            white-space: nowrap;
+            padding: 6px 10px;
+            border-radius: 20px;
+        }
+
+        .nav-link-mobile.active {
+            color: var(--primary);
+            background: rgba(0, 200, 83, 0.1);
+        }
+
+        .nav.desktop-nav {
+            display: none;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            border: none;
+            color: #000;
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 11px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            white-space: nowrap;
+        }
+
+        .btn-deposit {
+            background: rgba(0, 200, 83, 0.15);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 20px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* Mobile Sidebar */
+        .mobile-sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 300px;
+            height: 100%;
+            background: var(--bg-secondary);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .mobile-sidebar.open {
+            right: 0;
+        }
+
+        .mobile-sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .close-sidebar {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .mobile-sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 20px;
+        }
+
+        .mobile-sidebar-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 12px 0;
+            font-size: 14px;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mobile-sidebar-nav a i {
+            width: 24px;
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .mobile-sidebar-footer {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-top: 1px solid var(--border);
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 130px;
+            min-height: 100vh;
+        }
+
+        /* Hero Promo */
+        .promo-hero {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .promo-hero h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .promo-hero h1 i {
+            color: var(--primary);
+            margin-right: 12px;
+        }
+
+        .promo-hero p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Promo Cards Grid */
+        .promos-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .promo-card-large {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            animation: fadeInUp 0.8s ease;
+            animation-fill-mode: both;
+        }
+
+        .promo-card-large:nth-child(1) { animation-delay: 0.1s; }
+        .promo-card-large:nth-child(2) { animation-delay: 0.2s; }
+        .promo-card-large:nth-child(3) { animation-delay: 0.3s; }
+        .promo-card-large:nth-child(4) { animation-delay: 0.4s; }
+        .promo-card-large:nth-child(5) { animation-delay: 0.5s; }
+
+        .promo-card-large:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .promo-card-content {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .promo-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--gradient);
+            color: #000;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 14px;
+            z-index: 10;
+        }
+
+        .promo-image {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .promo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .promo-card-large:hover .promo-image img {
+            transform: scale(1.05);
+        }
+
+        .promo-info {
+            padding: 24px;
+        }
+
+        .promo-info h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .promo-info p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .promo-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .promo-detail {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 200, 83, 0.1);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .promo-detail i {
+            color: var(--primary);
+        }
+
+        .promo-code {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-family: monospace;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .promo-code span {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .copy-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .promo-btn {
+            background: var(--gradient-primary);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .promo-btn:hover {
+            transform: scale(1.02);
+            filter: brightness(1.05);
+            gap: 12px;
+        }
+
+        /* Tabs de Categorias */
+        .promo-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+        }
+
+        .tab-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 40px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+            padding: 0 8px;
+        }
+
+        .footer-about .logo {
+            margin-bottom: 12px;
+            display: inline-block;
+            font-size: 22px;
+        }
+
+        .footer-about p {
+            color: var(--text-secondary);
+            font-size: 12px;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-card);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .footer-links h4 {
+            font-size: 14px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .footer-links a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 12px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 10px;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--bg-card);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 12px;
+            z-index: 3000;
+            border-left: 3px solid var(--primary);
+            transition: transform 0.3s;
+            opacity: 0;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (min-width: 500px) {
+            .promos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .promo-hero h1 {
+                font-size: 42px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .header-top {
+                height: 70px;
+                padding: 0 32px;
+            }
+            
+            .logo {
+                font-size: 26px;
+            }
+            
+            .nav-mobile {
+                display: none;
+            }
+            
+            .nav.desktop-nav {
+                display: flex;
+                gap: 24px;
+            }
+            
+            .nav-link {
+                color: var(--text-secondary);
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 14px;
+                transition: color 0.3s;
+            }
+            
+            .nav-link:hover,
+            .nav-link.active {
+                color: var(--primary);
+            }
+            
+            .btn-outline, .btn-primary, .btn-deposit {
+                padding: 8px 20px;
+                font-size: 13px;
+            }
+            
+            .promos-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .promos-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .promo-hero h1 {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-animation"></div>
+<div class="particles" id="particles"></div>
+
+<!-- Header -->
+<header class="header">
+    <div class="container">
+        <div class="header-top">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <i class="fas fa-crown"></i> LUX<span>BET</span>
+            </div>
+            <nav class="nav desktop-nav">
+                <a href="index.html" class="nav-link">Início</a>
+                <a href="index.html#jogos" class="nav-link">Jogos</a>
+                <a href="promo.html" class="nav-link active">Promoções</a>
+                <a href="suporte.html" class="nav-link">Suporte</a>
+            </nav>
+            <div class="header-actions">
+                <button class="btn-outline" onclick="window.location.href='login.html'">Entrar</button>
+                <button class="btn-primary" onclick="window.location.href='cadastro.html'">Cadastrar</button>
+                <button class="btn-deposit" onclick="window.location.href='deposito.html'">
+                    <i class="fas fa-coins"></i> Depósito
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <nav class="nav-mobile">
+            <a href="index.html" class="nav-link-mobile">Início</a>
+            <a href="index.html#jogos" class="nav-link-mobile">Jogos</a>
+            <a href="promo.html" class="nav-link-mobile active">Promoções</a>
+            <a href="suporte.html" class="nav-link-mobile">Suporte</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Mobile Sidebar -->
+<div class="mobile-sidebar" id="mobileSidebar">
+    <div class="mobile-sidebar-header">
+        <div class="logo" onclick="window.location.href='index.html'">LUX<span>BET</span></div>
+        <button class="close-sidebar" id="closeSidebarBtn"><i class="fas fa-times"></i></button>
+    </div>
+    <nav class="mobile-sidebar-nav">
+        <a href="index.html"><i class="fas fa-home"></i> Início</a>
+        <a href="index.html#jogos"><i class="fas fa-dice-d6"></i> Jogos</a>
+        <a href="promo.html"><i class="fas fa-gift"></i> Promoções</a>
+        <a href="suporte.html"><i class="fas fa-headset"></i> Suporte</a>
+        <a href="deposito.html"><i class="fas fa-coins"></i> Depósito</a>
+        <a href="login.html"><i class="fas fa-user"></i> Minha Conta</a>
+    </nav>
+    <div class="mobile-sidebar-footer">
+        <button class="btn-outline w-100" onclick="window.location.href='login.html'">Entrar</button>
+        <button class="btn-primary w-100" onclick="window.location.href='cadastro.html'">Cadastrar</button>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="promo-hero">
+            <h1><i class="fas fa-gift"></i> Promoções Exclusivas</h1>
+            <p>Os melhores bônus e ofertas especiais para você aproveitar ao máximo!</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="promo-tabs">
+            <button class="tab-btn active" onclick="filterPromos('all')">Todas</button>
+            <button class="tab-btn" onclick="filterPromos('boas-vindas')">Boas-Vindas</button>
+            <button class="tab-btn" onclick="filterPromos('recarga')">Recarga</button>
+            <button class="tab-btn" onclick="filterPromos('especiais')">Especiais</button>
+        </div>
+
+        <!-- Promos Grid -->
+        <div class="promos-grid" id="promosGrid"></div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="logo">LUX<span>BET</span></div>
+                <p>O melhor cassino online do Brasil. Jogos justos, pagamentos rápidos e suporte 24/7.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Institucional</h4>
+                <a href="#">Sobre nós</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Regras de Bônus</a>
+            </div>
+            <div class="footer-links">
+                <h4>Suporte</h4>
+                <a href="suporte.html">Central de Ajuda</a>
+                <a href="suporte.html">FAQ</a>
+                <a href="suporte.html">Contato</a>
+                <a href="deposito.html">Depósitos</a>
+                <a href="#">Saques</a>
+            </div>
+            <div class="footer-links">
+                <h4>Jogos</h4>
+                <a href="index.html#jogos">Fortune Tiger</a>
+                <a href="index.html#jogos">Fortune Ox</a>
+                <a href="index.html#jogos">Aviator</a>
+                <a href="index.html#jogos">Roleta</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LuxBet - Todos os direitos reservados. Aposte com responsabilidade.</p>
+        </div>
+    </div>
+</footer>
+
+<div id="toast" class="toast"></div>
+
+<script>
+    // Lista de promoções
+    const promosList = [
+        {
+            id: 1,
+            category: "boas-vindas",
+            title: "Bônus de Boas-Vindas",
+            description: "Ganhe 100% de bônus no seu primeiro depósito até R$500 + 50 rodadas grátis no Fortune Tiger!",
+            badge: "100%",
+            image: "https://placehold.co/600x200/1a1e28/00c853?text=Bônus+100%",
+            details: ["Mínimo R$20", "Rollover 30x", "Válido por 30 dias"],
+            code: "LUX100",
+            buttonText: "Resgatar Bônus",
+            buttonLink: "cadastro.html"
+        },
+        {
+            id: 2,
+            category: "recarga",
+            title: "Bônus de Recarga",
+            description: "Ganhe 50% de bônus em todos os seus depósitos de recarga! Aproveite e aumente seus ganhos.",
+            badge: "50%",
+            image: "https://placehold.co/600x200/1a1e28/ffd700?text=Bônus+50%",
+            details: ["Mínimo R$50", "Rollover 25x", "Válido todo sábado"],
+            code: "RECARGA50",
+            buttonText: "Depositar Agora",
+            buttonLink: "deposito.html"
+        },
+        {
+            id: 3,
+            category: "especiais",
+            title: "Cashback Semanal",
+            description: "Recupere 20% das suas perdas toda segunda-feira! Quanto mais você joga, mais ganha de volta.",
+            badge: "20%",
+            image: "https://placehold.co/600x200/1a1e28/ff6b35?text=Cashback+20%",
+            details: ["Mínimo R$100 perdidos", "Crédito na terça", "Sem rollover"],
+            code: "AUTOMÁTICO",
+            buttonText: "Participar",
+            buttonLink: "deposito.html"
+        },
+        {
+            id: 4,
+            category: "especiais",
+            title: "Indique um Amigo",
+            description: "Convide seus amigos e ganhe R$50 para cada amigo que se cadastrar e depositar!",
+            badge: "R$50",
+            image: "https://placehold.co/600x200/1a1e28/00c853?text=Indique+Amigo",
+            details: ["Amigo deve depositar R$50", "Bônus imediato", "Sem limite"],
+            code: "INDICAR",
+            buttonText: "Convidar Amigos",
+            buttonLink: "#",
+            action: "share"
+        },
+        {
+            id: 5,
+            category: "recarga",
+            title: "Bônus de Aniversário",
+            description: "No seu mês de aniversário, ganhe um bônus especial de R$100 para jogar!",
+            badge: "R$100",
+            image: "https://placehold.co/600x200/1a1e28/ffd700?text=Aniversário",
+            details: ["Verificação de dados", "Válido no mês do aniversário", "Entre em contato"],
+            code: "FELIZ ANIVERSÁRIO",
+            buttonText: "Resgatar",
+            buttonLink: "suporte.html"
+        },
+        {
+            id: 6,
+            category: "boas-vindas",
+            title: "Pacote de Boas-Vindas",
+            description: "Pacote completo para novos jogadores: 3 bônus de depósito progressivos!",
+            badge: "R$1.000",
+            image: "https://placehold.co/600x200/1a1e28/ff6b35?text=Pacote+Completo",
+            details: ["1º: 100% até R$500", "2º: 75% até R$300", "3º: 50% até R$200"],
+            code: "PACOTE1000",
+            buttonText: "Quero Esse Pacote",
+            buttonLink: "cadastro.html"
+        }
+    ];
+
+    let currentFilter = "all";
+
+    function renderPromos() {
+        const grid = document.getElementById('promosGrid');
+        if (!grid) return;
+        
+        let filteredPromos = promosList;
+        if (currentFilter !== "all") {
+            filteredPromos = promosList.filter(promo => promo.category === currentFilter);
+        }
+        
+        grid.innerHTML = filteredPromos.map(promo => `
+            <div class="promo-card-large" data-category="${promo.category}">
+                <div class="promo-card-content">
+                    <div class="promo-badge">${promo.badge}</div>
+                    <div class="promo-image">
+                        <img src="${promo.image}" alt="${promo.title}">
+                    </div>
+                    <div class="promo-info">
+                        <h2>${promo.title}</h2>
+                        <p>${promo.description}</p>
+                        <div class="promo-details">
+                            ${promo.details.map(detail => `<span class="promo-detail"><i class="fas fa-check-circle"></i> ${detail}</span>`).join('')}
+                        </div>
+                        <div class="promo-code">
+                            <i class="fas fa-tag"></i> Código: <span>${promo.code}</span>
+                            <button class="copy-btn" onclick="copyCode('${promo.code}')">Copiar</button>
+                        </div>
+                        <button class="promo-btn" onclick="resgatarPromo('${promo.buttonLink}', '${promo.action || ''}')">
+                            ${promo.buttonText} <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function filterPromos(category) {
+        currentFilter = category;
+        
+        // Atualizar tabs ativas
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.textContent.toLowerCase().includes(category === 'all' ? 'todas' : 
+               
