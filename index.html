@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <meta name="description" content="LuxBet - O site mais confiável, justo e certificado. Junte-se a nós. Torne-se o próximo milionário">
     <meta name="theme-color" content="#0a0c10">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -11,86 +11,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Estilos adicionais para garantir consistência */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--bg-card);
-            color: var(--primary);
-            padding: 12px 24px;
-            border-radius: 40px;
-            font-weight: 600;
-            z-index: 3000;
-            border-left: 3px solid var(--primary);
-            transition: transform 0.3s;
-            opacity: 0;
-        }
-
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-
-        .game-card {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.5s, transform 0.5s, border-color 0.3s;
-        }
-
-        .game-card.animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .promo-card {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.5s, transform 0.5s, border-color 0.3s;
-        }
-
-        .promo-card.animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
 </head>
 <body>
     <div id="app">
         <!-- Header / Navbar -->
         <header class="header">
             <div class="container">
-                <div class="logo" onclick="window.location.href='index.html'">
-                    <i class="fas fa-crown"></i> LUX<span>BET</span>
+                <div class="header-top">
+                    <div class="logo" onclick="window.location.href='index.html'">
+                        <i class="fas fa-crown"></i> LUX<span>BET</span>
+                    </div>
+                    <nav class="nav desktop-nav">
+                        <a href="index.html" class="nav-link active">Início</a>
+                        <a href="#jogos" class="nav-link">Jogos</a>
+                        <a href="#promocoes" class="nav-link">Promoções</a>
+                        <a href="suporte.html" class="nav-link">Suporte</a>
+                    </nav>
+                    <div class="header-actions">
+                        <button class="btn-outline" onclick="window.location.href='login.html'">Entrar</button>
+                        <button class="btn-primary" onclick="window.location.href='cadastro.html'">Cadastrar</button>
+                        <button class="btn-deposit" onclick="window.location.href='deposito.html'">
+                            <i class="fas fa-coins"></i> Depósito
+                        </button>
+                        <button class="mobile-menu-btn" id="mobileMenuBtn">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
                 </div>
-                <nav class="nav desktop-nav">
-                    <a href="index.html" class="nav-link active">Início</a>
-                    <a href="#jogos" class="nav-link">Jogos</a>
-                    <a href="#promocoes" class="nav-link">Promoções</a>
-                    <a href="suporte.html" class="nav-link">Suporte</a>
+                <!-- Menu Mobile Visível (embaixo) -->
+                <nav class="nav-mobile">
+                    <a href="index.html" class="nav-link-mobile active">Início</a>
+                    <a href="#jogos" class="nav-link-mobile">Jogos</a>
+                    <a href="#promocoes" class="nav-link-mobile">Promoções</a>
+                    <a href="suporte.html" class="nav-link-mobile">Suporte</a>
                 </nav>
-                <div class="header-actions">
-                    <button class="btn-outline" onclick="window.location.href='login.html'">Entrar</button>
-                    <button class="btn-primary" onclick="window.location.href='cadastro.html'">Cadastrar</button>
-                    <button class="btn-deposit" onclick="window.location.href='deposito.html'">
-                        <i class="fas fa-coins"></i> Depósito
-                    </button>
-                    <button class="mobile-menu-btn" id="mobileMenuBtn">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
             </div>
         </header>
 
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-            <div class="mobile-menu-header">
+        <!-- Mobile Sidebar -->
+        <div class="mobile-sidebar" id="mobileSidebar">
+            <div class="mobile-sidebar-header">
                 <div class="logo" onclick="window.location.href='index.html'">LUX<span>BET</span></div>
-                <button class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></button>
+                <button class="close-sidebar" id="closeSidebarBtn"><i class="fas fa-times"></i></button>
             </div>
-            <nav class="mobile-nav">
+            <nav class="mobile-sidebar-nav">
                 <a href="index.html"><i class="fas fa-home"></i> Início</a>
                 <a href="#jogos"><i class="fas fa-dice-d6"></i> Jogos</a>
                 <a href="#promocoes"><i class="fas fa-gift"></i> Promoções</a>
@@ -98,7 +62,7 @@
                 <a href="deposito.html"><i class="fas fa-coins"></i> Depósito</a>
                 <a href="login.html"><i class="fas fa-user"></i> Minha Conta</a>
             </nav>
-            <div class="mobile-menu-footer">
+            <div class="mobile-sidebar-footer">
                 <button class="btn-outline w-100" onclick="window.location.href='login.html'">Entrar</button>
                 <button class="btn-primary w-100" onclick="window.location.href='cadastro.html'">Cadastrar</button>
             </div>
@@ -159,19 +123,6 @@
             </div>
         </section>
 
-        <!-- Popular Games Section -->
-        <section class="section">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-title">
-                        <h2><i class="fas fa-star"></i> Todos os Jogos</h2>
-                        <p>Escolha seu jogo favorito e comece a ganhar</p>
-                    </div>
-                </div>
-                <div class="games-grid" id="popularGames"></div>
-            </div>
-        </section>
-
         <!-- Promotions Section -->
         <section class="section" id="promocoes">
             <div class="container">
@@ -210,21 +161,6 @@
             </div>
         </section>
 
-        <!-- Newsletter Section -->
-        <section class="newsletter">
-            <div class="container">
-                <div class="newsletter-card">
-                    <i class="fas fa-envelope-open-text"></i>
-                    <h3>Receba Ofertas Exclusivas</h3>
-                    <p>Cadastre-se e receba bônus especiais no seu e-mail</p>
-                    <div class="newsletter-form">
-                        <input type="email" placeholder="Seu melhor e-mail" id="newsletterEmail">
-                        <button class="btn-primary" onclick="subscribeNewsletter()">Inscrever</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
@@ -247,20 +183,19 @@
                         <a href="#">Regras de Bônus</a>
                     </div>
                     <div class="footer-links">
-                        <h4>Jogos</h4>
-                        <a href="#" onclick="playGame('Fortune Tiger')">Fortune Tiger</a>
-                        <a href="#" onclick="playGame('Fortune Ox')">Fortune Ox</a>
-                        <a href="#" onclick="playGame('Fortune Rabbit')">Fortune Rabbit</a>
-                        <a href="#" onclick="playGame('Fortune Dragon')">Fortune Dragon</a>
-                        <a href="#" onclick="playGame('Aviator')">Aviator</a>
-                    </div>
-                    <div class="footer-links">
                         <h4>Suporte</h4>
                         <a href="suporte.html">Central de Ajuda</a>
                         <a href="suporte.html">FAQ</a>
                         <a href="suporte.html">Contato</a>
                         <a href="deposito.html">Depósitos</a>
                         <a href="#">Saques</a>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Jogos</h4>
+                        <a href="#" onclick="playGame('Fortune Tiger')">Fortune Tiger</a>
+                        <a href="#" onclick="playGame('Fortune Ox')">Fortune Ox</a>
+                        <a href="#" onclick="playGame('Aviator')">Aviator</a>
+                        <a href="#" onclick="playGame('Roleta')">Roleta</a>
                     </div>
                 </div>
                 <div class="footer-bottom">
@@ -273,190 +208,9 @@
     <div id="toast" class="toast"></div>
 
     <script>
-        // Lista completa de jogos com imagens
-        const allGames = [
-            { id: 1, name: "Fortune Tiger", category: "Slot", img: "imagens_jogos_cassino/fortune-tiger.jpg", description: "O tigre da sorte - Multiplique seus ganhos", featured: true },
-            { id: 2, name: "Fortune Snake", category: "Slot", img: "imagens_jogos_cassino/fortune-snake.jpg", description: "A serpente da fortuna", featured: true },
-            { id: 3, name: "Fortune Rabbit", category: "Slot", img: "imagens_jogos_cassino/fortune-rabbit.jpg", description: "Coelho da sorte - Prêmios incríveis", featured: true },
-            { id: 4, name: "Fortune Dragon", category: "Slot", img: "imagens_jogos_cassino/fortune-dragon.jpg", description: "Dragão da prosperidade", featured: true },
-            { id: 5, name: "Double Fortune", category: "Slot", img: "imagens_jogos_cassino/double-fortune.jpg", description: "Dobre sua sorte com bônus especiais", featured: true },
-            { id: 6, name: "Fortune Ox", category: "Slot", img: "imagens_jogos_cassino/fortune-ox.jpg", description: "Boi da abundância - Grandes prêmios", featured: true },
-            { id: 7, name: "Pinata Wins", category: "Slot", img: "imagens_jogos_cassino/pinata-wins.jpg", description: "Estoure a pinata e ganhe prêmios", featured: false },
-            { id: 8, name: "Ganesha Gold", category: "Slot", img: "imagens_jogos_cassino/ganesha-gold.jpg", description: "Ouro de Ganesha - Sorte e riqueza", featured: false },
-            { id: 9, name: "Yo Dragon", category: "Slot", img: "imagens_jogos_cassino/yo-dragon.jpg", description: "Dragão Yo - Aventura oriental", featured: false },
-            { id: 10, name: "Roleta Premium", category: "Roleta", img: "imagens_jogos_cassino/roleta.jpg", description: "Roleta ao vivo com dealers reais", featured: false },
-            { id: 11, name: "Aviator", category: "Crash", img: "imagens_jogos_cassino/aviator.jpg", description: "O jogo de avião mais emocionante", featured: false },
-            { id: 12, name: "Mines", category: "Crash", img: "imagens_jogos_cassino/mines.jpg", description: "Encontre as gemas e evite bombas", featured: false },
-            { id: 13, name: "Blackjack", category: "Mesa", img: "imagens_jogos_cassino/blackjack.jpg", description: "21 - O clássico do cassino", featured: false },
-            { id: 14, name: "Bac Bo", category: "Mesa", img: "imagens_jogos_cassino/bac-bo.jpg", description: "Baccarat moderno com dealers", featured: false },
-            { id: 15, name: "Crash", category: "Crash", img: "imagens_jogos_cassino/crash.jpg", description: "Multiplicadores explosivos", featured: false }
-        ];
-
-        // Jogos em destaque (primeiros 6)
-        const featuredGamesList = allGames.filter(game => game.featured === true);
-
-        // Todos os jogos
-        const popularGamesList = allGames;
-
-        function createGameCard(game, isFeatured = false) {
-            // Cores diferentes para cada categoria
-            let categoryColor = '';
-            let categoryIcon = '';
-            switch(game.category) {
-                case 'Slot':
-                    categoryColor = 'slot';
-                    categoryIcon = 'fa-dice-d6';
-                    break;
-                case 'Roleta':
-                    categoryColor = 'roleta';
-                    categoryIcon = 'fa-chart-line';
-                    break;
-                case 'Crash':
-                    categoryColor = 'crash';
-                    categoryIcon = 'fa-chart-simple';
-                    break;
-                case 'Mesa':
-                    categoryColor = 'mesa';
-                    categoryIcon = 'fa-club';
-                    break;
-                default:
-                    categoryColor = 'slot';
-                    categoryIcon = 'fa-dice-d6';
-            }
-            
-            return `
-                <div class="game-card" onclick="playGame('${game.name}')">
-                    <div class="game-card-image">
-                        <img src="${game.img}" alt="${game.name}" onerror="this.src='https://placehold.co/400x300/1a1e28/00c853?text=${encodeURIComponent(game.name)}'">
-                        ${isFeatured ? '<div class="featured-badge"><i class="fas fa-fire"></i> Destaque</div>' : ''}
-                        <div class="game-hover">
-                            <button class="play-now"><i class="fas fa-play"></i> Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <h3>${game.name}</h3>
-                        <p>${game.description}</p>
-                        <div class="game-category">
-                            <span class="category-badge ${categoryColor}">
-                                <i class="fas ${categoryIcon}"></i>
-                                ${game.category}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderGames() {
-            const featuredContainer = document.getElementById('featuredGames');
-            const popularContainer = document.getElementById('popularGames');
-            
-            if (featuredContainer) {
-                featuredContainer.innerHTML = featuredGamesList.map(game => createGameCard(game, true)).join('');
-            }
-            
-            if (popularContainer) {
-                popularContainer.innerHTML = popularGamesList.map(game => createGameCard(game, false)).join('');
-            }
-        }
-
-        function playGame(gameName) {
-            const isLogged = localStorage.getItem('isLogged');
-            if (isLogged === 'true') {
-                showToast(`🎮 Iniciando ${gameName}...`);
-                console.log(`Abrindo jogo: ${gameName}`);
-            } else {
-                showToast('⚠️ Faça login para jogar!');
-                setTimeout(() => {
-                    if(confirm('Você precisa estar logado para jogar. Deseja fazer login agora?')) {
-                        window.location.href = 'login.html';
-                    }
-                }, 500);
-            }
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
-        function subscribeNewsletter() {
-            const email = document.getElementById('newsletterEmail').value;
-            if (email && email.includes('@') && email.includes('.')) {
-                showToast('✅ Inscrito com sucesso! Você receberá novidades.');
-                document.getElementById('newsletterEmail').value = '';
-                const emails = JSON.parse(localStorage.getItem('newsletterEmails') || '[]');
-                if (!emails.includes(email)) {
-                    emails.push(email);
-                    localStorage.setItem('newsletterEmails', JSON.stringify(emails));
-                }
-            } else {
-                showToast('❌ Digite um e-mail válido!');
-            }
-        }
-
-        // Mobile Menu
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const closeMenuBtn = document.getElementById('closeMenuBtn');
-
-        if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.add('open');
-            });
-        }
-
-        if (closeMenuBtn) {
-            closeMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
-            });
-        }
-
-        // Close menu on outside click
-        document.addEventListener('click', (e) => {
-            if (mobileMenu && mobileMenu.classList.contains('open')) {
-                if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                    mobileMenu.classList.remove('open');
-                }
-            }
-        });
-
-        // Animate on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.game-card, .promo-card').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Load games
-        renderGames();
-
-        // Check login status on page load
-        window.addEventListener('load', () => {
-            const isLogged = localStorage.getItem('isLogged');
-            const userName = localStorage.getItem('userName');
-            if (isLogged === 'true' && userName) {
-                console.log('Usuário logado:', userName);
-                setTimeout(() => {
-                    showToast(`👋 Bem-vindo de volta, ${userName}!`);
-                }, 1000);
-            }
-        });
-    </script>
-</body>
-</html>
+        // Lista de jogos em destaque
+        const featuredGamesList = [
+            { id: 1, name: "Fortune Tiger", category: "Slot", img: "imagens_jogos_cassino/fortune-tiger.jpg", description: "O tigre da sorte" },
+            { id: 2, name: "Fortune Snake", category: "Slot", img: "imagens_jogos_cassino/fortune-snake.jpg", description: "A serpente da fortuna" },
+            { id: 3, name: "Fortune Rabbit", category: "Slot", img: "imagens_jogos_cassino/fortune-rabbit.jpg", description: "Coelho da sorte" },
+            { id: 4, name: "Fortune Dragon", category: "Slot", img: "imagens_jogos_cassino/fortune-dragon.jpg", description: "Dragão
