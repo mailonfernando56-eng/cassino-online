@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="description" content="Jogos LuxBet - Os melhores jogos de cassino online: Fortune Tiger, Roleta, Aviator, Mines e muito mais!">
-    <title>Jogos - LuxBet | Os Melhores Jogos de Cassino</title>
+    <meta name="description" content="Jogos LuxBet - Os melhores jogos de cassino online">
+    <title>Jogos - LuxBet | Todos os Jogos</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -21,16 +21,13 @@
             --bg-card-hover: #222832;
             --primary: #00c853;
             --primary-dark: #009624;
-            --primary-glow: rgba(0, 200, 83, 0.3);
             --secondary: #ffd700;
             --accent: #ff6b35;
             --text-primary: #ffffff;
             --text-secondary: #8a93a3;
-            --text-muted: #5a6373;
             --border: #2a2f3a;
             --gradient: linear-gradient(135deg, #00c853 0%, #ffd700 100%);
             --gradient-primary: linear-gradient(135deg, #00c853 0%, #69f0ae 100%);
-            --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             --shadow-glow: 0 0 40px rgba(0, 200, 83, 0.2);
         }
 
@@ -157,16 +154,10 @@
 
         .logo i {
             background: none;
-            -webkit-background-clip: unset;
-            background-clip: unset;
             color: var(--primary);
-            font-size: 18px;
         }
 
         .logo span {
-            background: none;
-            -webkit-background-clip: unset;
-            background-clip: unset;
             color: var(--secondary);
         }
 
@@ -180,8 +171,6 @@
             padding: 8px 12px;
             gap: 8px;
             overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
         }
 
         .nav-mobile::-webkit-scrollbar {
@@ -193,7 +182,6 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 12px;
-            transition: color 0.3s;
             white-space: nowrap;
             padding: 6px 10px;
             border-radius: 20px;
@@ -223,8 +211,6 @@
             font-weight: 600;
             font-size: 11px;
             cursor: pointer;
-            transition: all 0.3s;
-            white-space: nowrap;
         }
 
         .btn-primary {
@@ -236,8 +222,6 @@
             font-weight: 700;
             font-size: 11px;
             cursor: pointer;
-            transition: transform 0.3s;
-            white-space: nowrap;
         }
 
         .btn-deposit {
@@ -249,8 +233,6 @@
             font-weight: 600;
             font-size: 11px;
             cursor: pointer;
-            transition: all 0.3s;
-            white-space: nowrap;
             display: flex;
             align-items: center;
             gap: 4px;
@@ -324,7 +306,6 @@
         .mobile-sidebar-nav a i {
             width: 24px;
             color: var(--primary);
-            font-size: 16px;
         }
 
         .mobile-sidebar-footer {
@@ -345,7 +326,7 @@
             min-height: 100vh;
         }
 
-        /* Hero Jogos */
+        /* Hero */
         .games-hero {
             text-align: center;
             margin-bottom: 40px;
@@ -353,7 +334,7 @@
         }
 
         .games-hero h1 {
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 800;
             margin-bottom: 16px;
         }
@@ -365,7 +346,7 @@
 
         .games-hero p {
             color: var(--text-secondary);
-            font-size: 16px;
+            font-size: 14px;
             max-width: 600px;
             margin: 0 auto;
         }
@@ -381,7 +362,7 @@
             }
         }
 
-        /* Filtros de Categoria */
+        /* Filtros */
         .filter-section {
             margin-bottom: 30px;
         }
@@ -409,11 +390,6 @@
             background: var(--primary);
             color: #000;
             border-color: var(--primary);
-        }
-
-        .filter-btn:hover {
-            border-color: var(--primary);
-            color: var(--primary);
         }
 
         /* Games Grid */
@@ -445,6 +421,7 @@
             position: relative;
             overflow: hidden;
             aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #1a1e26, #0f1117);
         }
 
         .game-card-image img {
@@ -456,6 +433,25 @@
 
         .game-card:hover .game-card-image img {
             transform: scale(1.1);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1e26, #0f1117);
+            color: var(--text-secondary);
+            font-size: 12px;
+            gap: 8px;
+        }
+
+        .image-placeholder i {
+            font-size: 40px;
+            color: var(--primary);
+            opacity: 0.5;
         }
 
         .game-category-badge {
@@ -473,14 +469,10 @@
             gap: 4px;
         }
 
-        .game-category-badge i {
-            font-size: 9px;
-        }
-
         .game-category-badge.slot { color: #ff6b35; }
-        .game-category-badge.roleta { color: #00c853; }
         .game-category-badge.crash { color: #2196f3; }
         .game-category-badge.mesa { color: #9c27b0; }
+        .game-category-badge.roleta { color: #00c853; }
 
         .game-hover {
             position: absolute;
@@ -577,11 +569,6 @@
             transition: all 0.3s;
         }
 
-        .social-links a:hover {
-            background: var(--primary);
-            color: #000;
-        }
-
         .footer-links h4 {
             font-size: 14px;
             margin-bottom: 16px;
@@ -594,11 +581,6 @@
             text-decoration: none;
             margin-bottom: 10px;
             font-size: 12px;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
         }
 
         .footer-bottom {
@@ -636,31 +618,14 @@
 
         /* Responsive */
         @media (min-width: 500px) {
-            .games-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-            }
+            .games-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
         }
 
         @media (min-width: 768px) {
-            .header-top {
-                height: 70px;
-                padding: 0 32px;
-            }
-            
-            .logo {
-                font-size: 26px;
-            }
-            
-            .nav-mobile {
-                display: none;
-            }
-            
-            .nav.desktop-nav {
-                display: flex;
-                gap: 24px;
-            }
-            
+            .header-top { height: 70px; padding: 0 32px; }
+            .logo { font-size: 26px; }
+            .nav-mobile { display: none; }
+            .nav.desktop-nav { display: flex; gap: 24px; }
             .nav-link {
                 color: var(--text-secondary);
                 text-decoration: none;
@@ -668,41 +633,15 @@
                 font-size: 14px;
                 transition: color 0.3s;
             }
-            
-            .nav-link:hover,
-            .nav-link.active {
-                color: var(--primary);
-            }
-            
-            .btn-outline, .btn-primary, .btn-deposit {
-                padding: 8px 20px;
-                font-size: 13px;
-            }
-            
-            .games-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 24px;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 2fr 1fr 1fr 1fr;
-                gap: 40px;
-            }
-            
-            .games-hero h1 {
-                font-size: 42px;
-            }
+            .nav-link:hover, .nav-link.active { color: var(--primary); }
+            .btn-outline, .btn-primary, .btn-deposit { padding: 8px 20px; font-size: 13px; }
+            .games-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+            .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+            .games-hero h1 { font-size: 42px; }
         }
 
         @media (min-width: 1024px) {
-            .games-grid {
-                grid-template-columns: repeat(5, 1fr);
-                gap: 24px;
-            }
-            
-            .games-hero h1 {
-                font-size: 48px;
-            }
+            .games-grid { grid-template-columns: repeat(5, 1fr); }
         }
     </style>
 </head>
@@ -767,23 +706,20 @@
 <!-- Main Content -->
 <div class="main-content">
     <div class="container">
-        <!-- Hero Section -->
         <div class="games-hero">
-            <h1><i class="fas fa-dice-d6"></i> Nossos Jogos</h1>
+            <h1><i class="fas fa-dice-d6"></i> Todos os Jogos</h1>
             <p>Escolha seu jogo favorito e comece a ganhar agora mesmo!</p>
         </div>
 
-        <!-- Filtros -->
         <div class="filter-section">
             <div class="filter-buttons">
                 <button class="filter-btn active" onclick="filterGames('all')">Todos</button>
                 <button class="filter-btn" onclick="filterGames('slot')">Slots</button>
                 <button class="filter-btn" onclick="filterGames('crash')">Crash</button>
-                <button class="filter-btn" onclick="filterGames('mesa')">Mesa</button>
+                <button class="filter-btn" onclick="filterGames('mesa')">Mesa / Roleta</button>
             </div>
         </div>
 
-        <!-- Games Grid -->
         <div class="games-grid" id="gamesGrid"></div>
     </div>
 </div>
@@ -822,7 +758,7 @@
                 <a href="jogos.html">Todos os Jogos</a>
                 <a href="jogos.html">Slots</a>
                 <a href="jogos.html">Crash Games</a>
-                <a href="jogos.html">Mesa</a>
+                <a href="jogos.html">Roleta</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -834,23 +770,40 @@
 <div id="toast" class="toast"></div>
 
 <script>
-    // Lista completa de jogos
+    // LISTA COMPLETA DE JOGOS - COLOQUE O NOME DA IMAGEM EM "img" PARA CADA JOGO
+    // EXEMPLO: img: "imagens_jogos_cassino/fortune-tiger.jpg"
+    
     const allGames = [
-        { id: 1, name: "Fortune Tiger", category: "slot", img: "imagens_jogos_cassino/fortune-tiger.jpg", description: "O tigre da sorte - Multiplique seus ganhos" },
-        { id: 2, name: "Fortune Snake", category: "slot", img: "imagens_jogos_cassino/fortune-snake.jpg", description: "A serpente da fortuna" },
-        { id: 3, name: "Fortune Rabbit", category: "slot", img: "imagens_jogos_cassino/fortune-rabbit.jpg", description: "Coelho da sorte - Prêmios incríveis" },
-        { id: 4, name: "Fortune Dragon", category: "slot", img: "imagens_jogos_cassino/fortune-dragon.jpg", description: "Dragão da prosperidade" },
-        { id: 5, name: "Double Fortune", category: "slot", img: "imagens_jogos_cassino/double-fortune.jpg", description: "Dobre sua sorte com bônus especiais" },
-        { id: 6, name: "Fortune Ox", category: "slot", img: "imagens_jogos_cassino/fortune-ox.jpg", description: "Boi da abundância - Grandes prêmios" },
-        { id: 7, name: "Pinata Wins", category: "slot", img: "imagens_jogos_cassino/pinata-wins.jpg", description: "Estoure a pinata e ganhe prêmios" },
-        { id: 8, name: "Ganesha Gold", category: "slot", img: "imagens_jogos_cassino/ganesha-gold.jpg", description: "Ouro de Ganesha - Sorte e riqueza" },
-        { id: 9, name: "Yo Dragon", category: "slot", img: "imagens_jogos_cassino/yo-dragon.jpg", description: "Dragão Yo - Aventura oriental" },
-        { id: 10, name: "Aviator", category: "crash", img: "imagens_jogos_cassino/aviator.jpg", description: "O jogo de avião mais emocionante" },
-        { id: 11, name: "Mines", category: "crash", img: "imagens_jogos_cassino/mines.jpg", description: "Encontre as gemas e evite bombas" },
-        { id: 12, name: "Crash", category: "crash", img: "imagens_jogos_cassino/crash.jpg", description: "Multiplicadores explosivos" },
-        { id: 13, name: "Roleta Premium", category: "mesa", img: "imagens_jogos_cassino/roleta.jpg", description: "Roleta ao vivo com dealers reais" },
-        { id: 14, name: "Blackjack", category: "mesa", img: "imagens_jogos_cassino/blackjack.jpg", description: "21 - O clássico do cassino" },
-        { id: 15, name: "Bac Bo", category: "mesa", img: "imagens_jogos_cassino/bac-bo.jpg", description: "Baccarat moderno com dealers" }
+        // Fortune Tiger
+        { id: 1, name: "Fortune Tiger", category: "slot", img: "", description: "O tigre da sorte - Multiplique seus ganhos" },
+        // Fortune Snake
+        { id: 2, name: "Fortune Snake", category: "slot", img: "", description: "A serpente da fortuna" },
+        // Fortune Rabbit
+        { id: 3, name: "Fortune Rabbit", category: "slot", img: "", description: "Coelho da sorte - Prêmios incríveis" },
+        // Fortune Dragon
+        { id: 4, name: "Fortune Dragon", category: "slot", img: "", description: "Dragão da prosperidade" },
+        // Double Fortune
+        { id: 5, name: "Double Fortune", category: "slot", img: "", description: "Dobre sua sorte com bônus especiais" },
+        // Fortune Ox
+        { id: 6, name: "Fortune Ox", category: "slot", img: "", description: "Boi da abundância - Grandes prêmios" },
+        // Pinata Wins
+        { id: 7, name: "Pinata Wins", category: "slot", img: "", description: "Estoure a pinata e ganhe prêmios" },
+        // Ganesha Gold
+        { id: 8, name: "Ganesha Gold", category: "slot", img: "", description: "Ouro de Ganesha - Sorte e riqueza" },
+        // Yo Dragon
+        { id: 9, name: "Yo Dragon", category: "slot", img: "", description: "Dragão Yo - Aventura oriental" },
+        // Aviator
+        { id: 10, name: "Aviator", category: "crash", img: "", description: "O jogo de avião mais emocionante" },
+        // Mines
+        { id: 11, name: "Mines", category: "crash", img: "", description: "Encontre as gemas e evite bombas" },
+        // Crash
+        { id: 12, name: "Crash", category: "crash", img: "", description: "Multiplicadores explosivos" },
+        // Roleta Premium
+        { id: 13, name: "Roleta Premium", category: "mesa", img: "", description: "Roleta ao vivo com dealers reais" },
+        // Blackjack
+        { id: 14, name: "Blackjack", category: "mesa", img: "", description: "21 - O clássico do cassino" },
+        // Bac Bo
+        { id: 15, name: "Bac Bo", category: "mesa", img: "", description: "Baccarat moderno com dealers" }
     ];
 
     let currentFilter = "all";
@@ -887,10 +840,19 @@
         const categoryIcon = getCategoryIcon(game.category);
         const categoryName = getCategoryName(game.category);
         
+        // Se tiver imagem, mostra a imagem, senão mostra placeholder
+        const imageHtml = game.img && game.img !== "" 
+            ? `<img src="${game.img}" alt="${game.name}">`
+            : `<div class="image-placeholder">
+                   <i class="fas fa-image"></i>
+                   <span>Adicione sua imagem</span>
+                   <span style="font-size: 8px;">${game.name}</span>
+               </div>`;
+        
         return `
             <div class="game-card" data-category="${game.category}" onclick="playGame('${game.name}')">
                 <div class="game-card-image">
-                    <img src="${game.img}" alt="${game.name}" onerror="this.src='https://placehold.co/400x300/1a1e28/00c853?text=${encodeURIComponent(game.name)}'">
+                    ${imageHtml}
                     <div class="game-category-badge ${categoryColor}">
                         <i class="fas ${categoryIcon}"></i> ${categoryName}
                     </div>
@@ -921,7 +883,6 @@
     function filterGames(category) {
         currentFilter = category;
         
-        // Atualizar botões ativos
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.classList.remove('active');
             if (btn.textContent.toLowerCase() === (category === 'all' ? 'todos' : 
