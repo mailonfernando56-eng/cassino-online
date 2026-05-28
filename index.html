@@ -24,7 +24,7 @@
                     <nav class="nav desktop-nav">
                         <a href="index.html" class="nav-link active">Início</a>
                         <a href="#jogos" class="nav-link">Jogos</a>
-                        <a href="#promocoes" class="nav-link">Promoções</a>
+                        <a href="promo.html" class="nav-link">Promoções</a>
                         <a href="suporte.html" class="nav-link">Suporte</a>
                     </nav>
                     <div class="header-actions">
@@ -38,11 +38,11 @@
                         </button>
                     </div>
                 </div>
-                <!-- Menu Mobile Visível (embaixo) -->
+                <!-- Menu Mobile Visível -->
                 <nav class="nav-mobile">
                     <a href="index.html" class="nav-link-mobile active">Início</a>
                     <a href="#jogos" class="nav-link-mobile">Jogos</a>
-                    <a href="#promocoes" class="nav-link-mobile">Promoções</a>
+                    <a href="promo.html" class="nav-link-mobile">Promoções</a>
                     <a href="suporte.html" class="nav-link-mobile">Suporte</a>
                 </nav>
             </div>
@@ -57,7 +57,7 @@
             <nav class="mobile-sidebar-nav">
                 <a href="index.html"><i class="fas fa-home"></i> Início</a>
                 <a href="#jogos"><i class="fas fa-dice-d6"></i> Jogos</a>
-                <a href="#promocoes"><i class="fas fa-gift"></i> Promoções</a>
+                <a href="promo.html"><i class="fas fa-gift"></i> Promoções</a>
                 <a href="suporte.html"><i class="fas fa-headset"></i> Suporte</a>
                 <a href="deposito.html"><i class="fas fa-coins"></i> Depósito</a>
                 <a href="login.html"><i class="fas fa-user"></i> Minha Conta</a>
@@ -131,6 +131,7 @@
                         <h2><i class="fas fa-gift"></i> Bônus e Promoções</h2>
                         <p>Ofertas exclusivas para você</p>
                     </div>
+                    <a href="promo.html" class="view-all">Ver todas <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="promo-grid">
                     <div class="promo-card">
@@ -156,6 +157,21 @@
                         <p>Ganhe R$50 por indicação</p>
                         <div class="promo-code">Convite</div>
                         <button class="btn-primary w-100" onclick="showToast('Compartilhe seu link de indicação!')">Convidar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-card">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <h3>Receba Ofertas Exclusivas</h3>
+                    <p>Cadastre-se e receba bônus especiais no seu e-mail</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Seu melhor e-mail" id="newsletterEmail">
+                        <button class="btn-primary" onclick="subscribeNewsletter()">Inscrever</button>
                     </div>
                 </div>
             </div>
@@ -213,4 +229,131 @@
             { id: 1, name: "Fortune Tiger", category: "Slot", img: "imagens_jogos_cassino/fortune-tiger.jpg", description: "O tigre da sorte" },
             { id: 2, name: "Fortune Snake", category: "Slot", img: "imagens_jogos_cassino/fortune-snake.jpg", description: "A serpente da fortuna" },
             { id: 3, name: "Fortune Rabbit", category: "Slot", img: "imagens_jogos_cassino/fortune-rabbit.jpg", description: "Coelho da sorte" },
-            { id: 4, name: "Fortune Dragon", category: "Slot", img: "imagens_jogos_cassino/fortune-dragon.jpg", description: "Dragão
+            { id: 4, name: "Fortune Dragon", category: "Slot", img: "imagens_jogos_cassino/fortune-dragon.jpg", description: "Dragão da prosperidade" },
+            { id: 5, name: "Double Fortune", category: "Slot", img: "imagens_jogos_cassino/double-fortune.jpg", description: "Dobre sua sorte" },
+            { id: 6, name: "Fortune Ox", category: "Slot", img: "imagens_jogos_cassino/fortune-ox.jpg", description: "Boi da abundância" }
+        ];
+
+        function createGameCard(game) {
+            return `
+                <div class="game-card" onclick="playGame('${game.name}')">
+                    <div class="game-card-image">
+                        <img src="${game.img}" alt="${game.name}" onerror="this.src='https://placehold.co/400x300/1a1e28/00c853?text=${encodeURIComponent(game.name)}'">
+                        <div class="featured-badge"><i class="fas fa-fire"></i> Destaque</div>
+                        <div class="game-hover">
+                            <button class="play-now"><i class="fas fa-play"></i> Jogar</button>
+                        </div>
+                    </div>
+                    <div class="game-card-info">
+                        <h3>${game.name}</h3>
+                        <p>${game.description}</p>
+                        <div class="game-category">
+                            <span class="category-badge slot">
+                                <i class="fas fa-dice-d6"></i> ${game.category}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderGames() {
+            const featuredContainer = document.getElementById('featuredGames');
+            if (featuredContainer) {
+                featuredContainer.innerHTML = featuredGamesList.map(game => createGameCard(game)).join('');
+            }
+        }
+
+        function playGame(gameName) {
+            const isLogged = localStorage.getItem('isLogged');
+            if (isLogged === 'true') {
+                showToast(`🎮 Iniciando ${gameName}...`);
+            } else {
+                showToast('⚠️ Faça login para jogar!');
+                setTimeout(() => {
+                    if(confirm('Você precisa estar logado para jogar. Deseja fazer login agora?')) {
+                        window.location.href = 'login.html';
+                    }
+                }, 500);
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function subscribeNewsletter() {
+            const email = document.getElementById('newsletterEmail').value;
+            if (email && email.includes('@') && email.includes('.')) {
+                showToast('✅ Inscrito com sucesso! Você receberá novidades.');
+                document.getElementById('newsletterEmail').value = '';
+            } else {
+                showToast('❌ Digite um e-mail válido!');
+            }
+        }
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileSidebar = document.getElementById('mobileSidebar');
+        const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileSidebar.classList.add('open');
+            });
+        }
+
+        if (closeSidebarBtn) {
+            closeSidebarBtn.addEventListener('click', () => {
+                mobileSidebar.classList.remove('open');
+            });
+        }
+
+        document.addEventListener('click', (e) => {
+            if (mobileSidebar && mobileSidebar.classList.contains('open')) {
+                if (!mobileSidebar.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    mobileSidebar.classList.remove('open');
+                }
+            }
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.game-card, .promo-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Load games
+        renderGames();
+
+        // Check login status
+        window.addEventListener('load', () => {
+            const isLogged = localStorage.getItem('isLogged');
+            const userName = localStorage.getItem('userName');
+            if (isLogged === 'true' && userName) {
+                console.log('Usuário logado:', userName);
+                setTimeout(() => {
+                    showToast(`👋 Bem-vindo de volta, ${userName}!`);
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>
